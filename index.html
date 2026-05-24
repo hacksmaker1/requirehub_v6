@@ -65,29 +65,6 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
 .profileBtn:hover{transform:scale(1.1);box-shadow:0 0 32px rgba(0,168,255,0.5);}
 .profileBtn img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
 
-/* ASK AI BUTTON */
-.askAiBtn{background:linear-gradient(135deg,#7b5fff,#00a8ff);border:none;color:white;padding:10px 18px;border-radius:var(--radius-sm);margin-top:0;cursor:pointer;font-weight:700;font-family:'Space Grotesk',sans-serif;font-size:13px;transition:all 0.22s var(--ease);display:flex;align-items:center;gap:6px;white-space:nowrap;box-shadow:0 0 16px rgba(123,95,255,0.3);}
-.askAiBtn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(123,95,255,0.45);}
-.askAiBtn:active{transform:translateY(0);}
-
-/* AI MODAL */
-.aiModal{width:560px;max-width:96vw;}
-.aiChatArea{background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:var(--radius-md);padding:16px;height:340px;overflow-y:auto;display:flex;flex-direction:column;gap:12px;margin-bottom:12px;}
-.aiMsg{max-width:85%;padding:12px 16px;border-radius:14px;font-size:14px;line-height:1.6;animation:msgIn 0.2s var(--ease) both;}
-.aiMsg.user{background:var(--accent-grad);align-self:flex-end;border-bottom-right-radius:3px;}
-.aiMsg.assistant{background:rgba(255,255,255,0.05);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:3px;white-space:pre-wrap;}
-.aiMsg.thinking{background:rgba(123,95,255,0.08);border:1px solid rgba(123,95,255,0.2);align-self:flex-start;color:var(--text-muted);font-size:13px;display:flex;align-items:center;gap:8px;}
-.aiThinkDots{display:flex;gap:4px;}
-.aiThinkDots span{width:6px;height:6px;border-radius:50%;background:var(--accent2);animation:pulse 1.2s ease-in-out infinite;}
-.aiThinkDots span:nth-child(2){animation-delay:0.2s;}
-.aiThinkDots span:nth-child(3){animation-delay:0.4s;}
-.aiInputRow{display:flex;gap:8px;}
-.aiInputRow input{margin-top:0;flex:1;}
-.aiInputRow button{margin-top:0;padding:12px 20px;white-space:nowrap;}
-.aiWelcome{text-align:center;color:var(--text-muted);font-size:13px;padding:20px;display:flex;flex-direction:column;align-items:center;gap:8px;}
-.aiWelcome .aiIcon{font-size:40px;margin-bottom:4px;}
-.aiWelcome strong{color:var(--text);font-size:15px;}
-
 /* GIF PICKER */
 .gifBtn{background:rgba(255,255,255,0.06)!important;border:1px solid var(--border)!important;color:var(--text-muted)!important;padding:10px 14px!important;border-radius:var(--radius-sm)!important;margin-top:0!important;font-size:16px!important;cursor:pointer!important;transition:all 0.18s var(--ease)!important;white-space:nowrap!important;}
 .gifBtn:hover{background:rgba(0,168,255,0.1)!important;border-color:var(--border-glow)!important;color:var(--accent)!important;transform:translateY(-1px)!important;box-shadow:none!important;}
@@ -99,13 +76,12 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
 .gifSearchRow{display:flex;gap:8px;}
 .gifSearchRow input{margin-top:0;flex:1;}
 .gifSearchRow button{margin-top:0;padding:12px 18px;}
-.gifGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;overflow-y:auto;max-height:320px;}
-.gifItem{border-radius:10px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:all 0.18s var(--ease);aspect-ratio:1;}
+.gifGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;overflow-y:auto;max-height:320px;align-items:start;}
+.gifItem{border-radius:10px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:all 0.18s var(--ease);line-height:0;}
 .gifItem:hover{border-color:var(--accent);transform:scale(1.03);}
-.gifItem img{width:100%;height:100%;object-fit:cover;display:block;}
+.gifItem img{width:100%;height:auto;display:block;object-fit:cover;}
 .gifEmpty{color:var(--text-muted);text-align:center;padding:20px;font-size:13px;grid-column:1/-1;}
 
-/* CHAT GIF display */
 .chatGif{max-width:200px;border-radius:10px;margin-top:4px;display:block;}
 .dmGif{max-width:200px;border-radius:10px;margin-top:4px;display:block;}
 
@@ -171,13 +147,9 @@ button:active{transform:translateY(0);}
 .dmConvoItem{display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer;transition:background 0.15s;border-bottom:1px solid rgba(255,255,255,0.04);position:relative;}
 .dmConvoItem:hover{background:rgba(255,255,255,0.04);}
 .dmConvoItem.active{background:rgba(0,168,255,0.08);}
-.dmConvoAv{width:36px;height:36px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:18px;background:rgba(0,168,255,0.1);border:1px solid rgba(0,168,255,0.2);flex-shrink:0;}
-.dmConvoAv img{width:100%;height:100%;object-fit:cover;}
 .dmConvoName{font-size:13px;font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .dmMain{flex:1;display:flex;flex-direction:column;min-width:0;}
 .dmHeader{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;background:rgba(0,0,0,0.15);}
-.dmHeaderAv{width:34px;height:34px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:18px;background:rgba(0,168,255,0.1);flex-shrink:0;}
-.dmHeaderAv img{width:100%;height:100%;object-fit:cover;}
 .dmHeaderName{font-size:15px;font-weight:700;}
 .dmMessages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:8px;}
 .dmMsg{max-width:75%;padding:10px 14px;border-radius:14px;font-size:14px;line-height:1.5;animation:msgIn 0.2s var(--ease) both;}
@@ -218,7 +190,7 @@ button:active{transform:translateY(0);}
 .profileInfo{position:relative;z-index:1;}
 .profileName{font-size:24px;font-weight:700;margin-bottom:4px;}
 .profileBio{color:var(--text-muted);font-size:14px;margin-bottom:12px;line-height:1.5;}
-.profileStats{display:flex;gap:24px;margin-top:8px;}
+.profileStats{display:flex;gap:24px;margin-top:8px;flex-wrap:wrap;}
 .profileStat .num{font-size:20px;font-weight:700;color:var(--accent);}
 .profileStat .lbl{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;}
 .profileActions{display:flex;gap:10px;margin-top:16px;position:relative;z-index:1;flex-wrap:wrap;}
@@ -233,8 +205,6 @@ button:active{transform:translateY(0);}
 .friendMeta{font-size:12px;color:var(--text-muted);}
 .requestCard{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:16px;display:flex;align-items:center;gap:14px;margin-bottom:12px;transition:border-color 0.2s;}
 .requestCard:hover{border-color:var(--border-glow);}
-.requestAvatar{width:46px;height:46px;border-radius:50%;background:rgba(0,168,255,0.08);border:2px solid rgba(0,168,255,0.2);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;overflow:hidden;}
-.requestAvatar img{width:100%;height:100%;object-fit:cover;}
 .requestInfo{flex:1;}
 .requestName{font-size:14px;font-weight:600;}
 .requestSub{font-size:12px;color:var(--text-muted);margin-top:2px;}
@@ -242,8 +212,6 @@ button:active{transform:translateY(0);}
 .requestBtns button{margin:0;padding:8px 14px;font-size:12px;}
 .userRow{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:var(--radius-md);cursor:pointer;transition:background 0.15s;border:1px solid transparent;margin-bottom:6px;}
 .userRow:hover{background:rgba(255,255,255,0.04);border-color:var(--border);}
-.userRowAv{width:40px;height:40px;border-radius:50%;background:rgba(0,168,255,0.08);border:2px solid rgba(0,168,255,0.2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;overflow:hidden;}
-.userRowAv img{width:100%;height:100%;object-fit:cover;}
 .userRowName{font-size:14px;font-weight:600;}
 .userRowSub{font-size:12px;color:var(--text-muted);}
 .userRowActions{display:flex;gap:6px;margin-left:auto;align-items:center;flex-shrink:0;}
@@ -263,6 +231,44 @@ button:active{transform:translateY(0);}
 ::-webkit-scrollbar-track{background:transparent;}
 ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:10px;}
 ::-webkit-scrollbar-thumb:hover{background:rgba(0,168,255,0.35);}
+
+/* SCRIPT PREVIEW MODAL */
+.previewModal{width:560px;max-width:96vw;}
+.previewInfo{background:rgba(0,168,255,0.04);border:1px solid rgba(0,168,255,0.12);border-radius:var(--radius-md);padding:16px 18px;margin-bottom:16px;}
+.previewName{font-size:22px;font-weight:700;margin-bottom:6px;}
+.previewId{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--accent);background:rgba(0,168,255,0.06);padding:10px 14px;border-radius:8px;word-break:break-all;margin-bottom:12px;border:1px solid rgba(0,168,255,0.12);}
+.previewMeta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.previewActions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
+.previewActions button{margin:0;}
+
+/* COMMENTS */
+.commentsSection{margin-top:4px;}
+.commentsHead{font-size:14px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.commentCount{font-size:12px;color:var(--text-muted);font-weight:400;}
+.commentsList{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;max-height:240px;overflow-y:auto;}
+.commentItem{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:var(--radius-md);padding:12px 14px;transition:border-color 0.2s;}
+.commentItem:hover{border-color:rgba(0,168,255,0.2);}
+.commentHead{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.commentAv{width:26px;height:26px;border-radius:50%;background:rgba(0,168,255,0.1);border:1px solid rgba(0,168,255,0.2);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;overflow:hidden;}
+.commentAv img{width:100%;height:100%;object-fit:cover;}
+.commentUser{font-size:12px;font-weight:600;}
+.commentTime{font-size:11px;color:var(--text-dim);margin-left:auto;}
+.commentText{font-size:13px;line-height:1.5;color:var(--text);}
+.commentDeleteBtn{background:none!important;border:none!important;color:var(--text-dim)!important;font-size:12px!important;padding:0 4px!important;margin:0 0 0 auto!important;cursor:pointer!important;opacity:0;transition:opacity 0.15s!important;}
+.commentItem:hover .commentDeleteBtn{opacity:1;}
+.commentDeleteBtn:hover{color:var(--danger)!important;transform:none!important;box-shadow:none!important;}
+.addCommentRow{display:flex;gap:8px;align-items:center;}
+.addCommentRow input{margin-top:0;flex:1;}
+.addCommentRow button{margin-top:0;padding:12px 18px;white-space:nowrap;}
+
+.cardCommentBtn{background:rgba(255,255,255,0.04)!important;border:1px solid var(--border)!important;color:var(--text-muted)!important;padding:7px 14px!important;border-radius:20px!important;font-size:13px!important;margin:0!important;transition:all 0.18s var(--ease)!important;}
+.cardCommentBtn:hover{background:rgba(0,168,255,0.1)!important;border-color:rgba(0,168,255,0.35)!important;color:var(--accent)!important;transform:scale(1.05)!important;box-shadow:none!important;}
+
+/* FOLLOW BUTTON */
+.followBtn{background:rgba(0,168,255,0.12)!important;border:1px solid rgba(0,168,255,0.3)!important;color:var(--accent)!important;padding:10px 20px!important;border-radius:var(--radius-sm)!important;font-size:13px!important;font-weight:600!important;margin:0!important;transition:all 0.2s var(--ease)!important;cursor:pointer!important;}
+.followBtn:hover{background:rgba(0,168,255,0.22)!important;box-shadow:0 0 16px rgba(0,168,255,0.25)!important;transform:translateY(-1px)!important;}
+.followBtn.following{background:rgba(255,255,255,0.06)!important;border-color:var(--border)!important;color:var(--text-muted)!important;}
+.followBtn.following:hover{background:rgba(239,68,68,0.1)!important;border-color:rgba(239,68,68,0.3)!important;color:#f87171!important;}
 </style>
 </head>
 <body>
@@ -275,7 +281,7 @@ button:active{transform:translateY(0);}
   <button class="navBtn" id="navDMs">✉️ Messages <span class="navBadge" id="dmBadge" style="display:none">0</span></button>
   <button class="navBtn" id="navFriends">👥 Friends <span class="navBadge" id="friendBadge" style="display:none">0</span></button>
   <button class="navBtn" id="navMyProfile">👤 My Profile</button>
-  <button class="navBtn" id="navInvite">🔑 Invite Key</button>
+  <button class="navBtn" id="navInvite">🔑 Invite</button>
   <button class="navBtn" id="navLogout" style="margin-top:20px">🚪 Logout</button>
 </div>
 
@@ -320,7 +326,6 @@ button:active{transform:translateY(0);}
   <div class="topbar">
     <div class="welcome" id="welcomeMsg">Welcome back</div>
     <div class="topbarRight">
-      <button class="askAiBtn" id="askAiTopBtn">✨ Ask AI</button>
       <input class="searchBox" type="text" id="searchBar" placeholder="Search scripts…">
       <button class="profileBtn" id="profileBtn"></button>
     </div>
@@ -332,7 +337,7 @@ button:active{transform:translateY(0);}
       <h2>Add Require Script</h2>
       <p class="inputGroupSub">Share a script with the community</p>
       <input type="text" id="scriptName" placeholder="Script Name">
-      <input type="text" id="requireID" placeholder="Require ID">
+      <input type="text" id="requireID" placeholder="Require Text (e.g. 123456789)">
       <button id="addScriptBtn">Add Script</button>
     </div>
     <div class="cardGrid" id="scriptList"></div>
@@ -396,7 +401,7 @@ button:active{transform:translateY(0);}
   <!-- INVITE -->
   <div class="tabContent" id="tab-invite">
     <div class="inviteBox">
-      <h2>Invite Key</h2>
+      <h2>Invite System</h2>
       <p style="color:#888;margin-top:8px;font-size:13px;">Share this key with people you want to let in:</p>
       <div class="inviteKeyBox" id="currentInvite">Loading…</div>
       <button id="genInviteBtn">🔄 Generate New Key</button>
@@ -445,30 +450,6 @@ button:active{transform:translateY(0);}
   </div>
 </div>
 
-<!-- ASK AI MODAL -->
-<div class="overlay" id="aiOverlay">
-  <div class="modal aiModal">
-    <div class="modalHead">
-      <span>✨ Ask AI</span>
-      <div style="display:flex;gap:8px;align-items:center;">
-        <button id="aiClearBtn" style="background:rgba(255,255,255,0.06);border:1px solid var(--border);color:var(--text-muted);padding:6px 12px;border-radius:8px;font-size:12px;margin:0;cursor:pointer;">Clear</button>
-        <button class="closeBtn" id="aiCloseBtn">✕</button>
-      </div>
-    </div>
-    <div class="aiChatArea" id="aiChatArea">
-      <div class="aiWelcome" id="aiWelcome">
-        <div class="aiIcon">🤖</div>
-        <strong>Hi! I'm your AI assistant</strong>
-        <span>Ask me anything — scripting help, coding questions, ideas, or just chat!</span>
-      </div>
-    </div>
-    <div class="aiInputRow">
-      <input type="text" id="aiInput" placeholder="Ask me anything…">
-      <button id="aiSendBtn">Ask</button>
-    </div>
-  </div>
-</div>
-
 <!-- GIF PICKER -->
 <div class="gifPickerOverlay" id="gifPickerOverlay">
   <div class="gifPicker">
@@ -486,12 +467,23 @@ button:active{transform:translateY(0);}
   </div>
 </div>
 
+<!-- SCRIPT PREVIEW MODAL -->
+<div class="overlay" id="previewOverlay">
+  <div class="modal previewModal">
+    <div class="modalHead">
+      <span id="previewModalTitle">Script Preview</span>
+      <button class="closeBtn" id="previewCloseBtn">✕</button>
+    </div>
+    <div id="previewModalContent"></div>
+  </div>
+</div>
+
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import {
   getFirestore, collection, addDoc, deleteDoc, doc,
   onSnapshot, query, orderBy, serverTimestamp, getDoc,
-  setDoc, updateDoc, arrayUnion, arrayRemove, getDocs, where, limit
+  setDoc, updateDoc, arrayUnion, arrayRemove, getDocs, where
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -507,8 +499,6 @@ const db  = getFirestore(app);
 
 const STATIC_INVITE = "FreeInvite9116X88";
 const AVATARS = ["🐱","🐶","🦊","🐺","🐻","🐼","🐸","🐵","🦁","🐯","🐨","🦝","🐙","🦋","🐲","🦄","🤖","👾","🧙","🧛","🥷","👻","🎭","⚡","🔥","🌊","🍀","🌸","💎","🚀"];
-// Tenor API key — free public key for demos
-const TENOR_KEY = "AIzaSyDlFrankg4WWLeoo3FIeQxJ7QSbTXCEVaA";
 
 const el = id => document.getElementById(id);
 function setStatus(t){ el("status").textContent = t; }
@@ -555,67 +545,20 @@ async function getInviteKey(){
   } catch { return STATIC_INVITE; }
 }
 
-// ─── ASK AI ──────────────────────────────────────────────────
-let aiHistory = [];
-
-el("askAiTopBtn").addEventListener("click",()=>{ el("aiOverlay").classList.add("open"); setTimeout(()=>el("aiInput").focus(),100); });
-el("aiCloseBtn").addEventListener("click",()=>el("aiOverlay").classList.remove("open"));
-el("aiOverlay").addEventListener("click",e=>{ if(e.target===el("aiOverlay")) el("aiOverlay").classList.remove("open"); });
-el("aiClearBtn").addEventListener("click",()=>{ aiHistory=[]; el("aiChatArea").innerHTML=`<div class="aiWelcome" id="aiWelcome"><div class="aiIcon">🤖</div><strong>Hi! I'm your AI assistant</strong><span>Ask me anything — scripting help, coding questions, ideas, or just chat!</span></div>`; });
-el("aiInput").addEventListener("keydown",e=>{ if(e.key==="Enter") sendAiMessage(); });
-el("aiSendBtn").addEventListener("click",sendAiMessage);
-
-function appendAiMsg(role, text){
-  const welcome = el("aiWelcome"); if(welcome) welcome.remove();
-  const area = el("aiChatArea");
-  const div = document.createElement("div");
-  div.className = "aiMsg " + role;
-  div.textContent = text;
-  area.appendChild(div);
-  area.scrollTop = area.scrollHeight;
-  return div;
+// ─── FOLLOW SYSTEM ───────────────────────────────────────────
+async function followUser(targetUsername){
+  const me = localStorage.getItem("username");
+  await updateDoc(doc(db,"users",me),{following:arrayUnion(targetUsername)});
+  await updateDoc(doc(db,"users",targetUsername),{followers:arrayUnion(me)});
 }
-
-async function sendAiMessage(){
-  const input = el("aiInput"); const text = input.value.trim(); if(!text) return;
-  input.value = ""; input.disabled = true; el("aiSendBtn").disabled = true;
-
-  appendAiMsg("user", text);
-  aiHistory.push({ role:"user", content: text });
-
-  // Thinking indicator
-  const thinkDiv = document.createElement("div");
-  thinkDiv.className = "aiMsg thinking";
-  thinkDiv.innerHTML = `<div class="aiThinkDots"><span></span><span></span><span></span></div><span>Thinking…</span>`;
-  el("aiChatArea").appendChild(thinkDiv);
-  el("aiChatArea").scrollTop = el("aiChatArea").scrollHeight;
-
-  try {
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: 1000,
-        system: "You are a helpful AI assistant built into RequireHub, a platform for sharing Roblox/Lua require scripts. You help users with scripting questions, coding help, and general questions. Be friendly, concise, and helpful.",
-        messages: aiHistory
-      })
-    });
-    const data = await res.json();
-    thinkDiv.remove();
-    const reply = data.content?.[0]?.text || "Sorry, I couldn't get a response.";
-    aiHistory.push({ role:"assistant", content: reply });
-    appendAiMsg("assistant", reply);
-  } catch(err) {
-    thinkDiv.remove();
-    appendAiMsg("assistant", "⚠️ Error connecting to AI. Please try again.");
-  }
-
-  input.disabled = false; el("aiSendBtn").disabled = false; input.focus();
+async function unfollowUser(targetUsername){
+  const me = localStorage.getItem("username");
+  await updateDoc(doc(db,"users",me),{following:arrayRemove(targetUsername)});
+  await updateDoc(doc(db,"users",targetUsername),{followers:arrayRemove(me)});
 }
 
 // ─── GIF PICKER ──────────────────────────────────────────────
-let gifCallback = null; // function to call with chosen gif URL
+let gifCallback = null;
 
 function openGifPicker(onSelect){
   gifCallback = onSelect;
@@ -623,7 +566,6 @@ function openGifPicker(onSelect){
   el("gifSearchInput").value = "";
   el("gifGrid").innerHTML = `<div class="gifEmpty">Search for a GIF above to get started 🎉</div>`;
   setTimeout(()=>el("gifSearchInput").focus(),100);
-  // Load trending by default
   loadGifs("trending");
 }
 
@@ -632,20 +574,20 @@ el("gifPickerOverlay").addEventListener("click",e=>{ if(e.target===el("gifPicker
 el("gifSearchBtn").addEventListener("click",()=>{ const q=el("gifSearchInput").value.trim(); loadGifs(q||"trending"); });
 el("gifSearchInput").addEventListener("keydown",e=>{ if(e.key==="Enter"){ const q=el("gifSearchInput").value.trim(); loadGifs(q||"trending"); } });
 
-async function loadGifs(query){
+async function loadGifs(searchQuery){
   const grid = el("gifGrid");
   grid.innerHTML = `<div class="gifEmpty" style="animation:pulse 1s infinite;">Loading GIFs…</div>`;
   try {
-    const isTrending = query === "trending";
+    const isTrending = searchQuery === "trending";
     const url = isTrending
-      ? `https://tenor.googleapis.com/v2/featured?key=${TENOR_KEY}&limit=18&media_filter=gif`
-      : `https://tenor.googleapis.com/v2/search?q=${encodeURIComponent(query)}&key=${TENOR_KEY}&limit=18&media_filter=gif`;
+      ? `https://g.tenor.com/v1/trending?key=LIVDSRZULELA&limit=18&media_filter=minimal`
+      : `https://g.tenor.com/v1/search?q=${encodeURIComponent(searchQuery)}&key=LIVDSRZULELA&limit=18&media_filter=minimal`;
     const res = await fetch(url);
     const data = await res.json();
     grid.innerHTML = "";
-    if(!data.results?.length){ grid.innerHTML=`<div class="gifEmpty">No GIFs found. Try a different search!</div>`; return; }
+    if(!data.results?.length){ grid.innerHTML=`<div class="gifEmpty">No GIFs found. Try another search!</div>`; return; }
     data.results.forEach(r=>{
-      const gifUrl = r.media_formats?.gif?.url || r.media_formats?.tinygif?.url;
+      const gifUrl = r.media?.[0]?.tinygif?.url || r.media?.[0]?.gif?.url;
       if(!gifUrl) return;
       const item = document.createElement("div"); item.className = "gifItem";
       const img = document.createElement("img"); img.src = gifUrl; img.alt = r.content_description || "GIF";
@@ -662,7 +604,6 @@ async function loadGifs(query){
   }
 }
 
-// GIF button for global chat
 el("globalGifBtn").addEventListener("click",()=>{
   openGifPicker(async (gifUrl)=>{
     const me = localStorage.getItem("username")||"unknown";
@@ -733,7 +674,12 @@ el("signInBtn").addEventListener("click",async()=>{
     if(existing){ setStatus("Username already taken"); return; }
     const pfpFinal=signupImgData||signupPfp;
     const bio=el("bioField").value.trim();
-    await saveUserDoc(user,{username:user,password:pass,pfp:pfpFinal,bio,friends:[],friendRequests:[],sentRequests:[],createdAt:new Date().toISOString()});
+    await saveUserDoc(user,{
+      username:user,password:pass,pfp:pfpFinal,bio,
+      friends:[],friendRequests:[],sentRequests:[],
+      followers:[],following:[],
+      createdAt:new Date().toISOString()
+    });
     localStorage.setItem("loggedIn","true"); localStorage.setItem("username",user);
     localStorage.setItem("password",pass); localStorage.setItem("pfp",pfpFinal); localStorage.setItem("bio",bio);
     openPanel();
@@ -818,18 +764,26 @@ function renderScripts(){
       <div class="requireText">require(${s.id})</div>
       <div class="rowBtns">
         <button class="copyBtn">📋 Copy</button>
+        <button class="previewBtn btnSecondary">👁 Preview</button>
         ${s.owner===me?`<button class="btnDanger deleteBtn">Delete</button>`:""}
       </div>
       <div class="cardLikeRow">
         <button class="likeBtn${liked?" liked":""}">${liked?"❤️":"🤍"} Like</button>
         <span class="likeCount">${likes.length} like${likes.length!==1?"s":""}</span>
+        <button class="cardCommentBtn commentPreviewBtn">💬</button>
       </div>`;
     const badge=div.querySelector(".ownerBadge");
     badge.appendChild(avEl); badge.appendChild(document.createTextNode(" "+(s.owner||"unknown")));
     badge.addEventListener("click",()=>openUserProfile(s.owner));
     div.querySelector(".copyBtn").addEventListener("click",()=>{ navigator.clipboard.writeText(`require(${s.id})`); div.querySelector(".copyBtn").textContent="✅ Copied!"; setTimeout(()=>div.querySelector(".copyBtn").textContent="📋 Copy",1500); });
+    div.querySelector(".previewBtn").addEventListener("click",()=>openScriptPreview(s));
+    div.querySelector(".commentPreviewBtn").addEventListener("click",()=>openScriptPreview(s));
     div.querySelector(".likeBtn").addEventListener("click",async()=>{ const ref=doc(db,"scripts",s.docId); liked?await updateDoc(ref,{likes:arrayRemove(me)}):await updateDoc(ref,{likes:arrayUnion(me)}); });
     if(s.owner===me) div.querySelector(".deleteBtn").addEventListener("click",async()=>await deleteDoc(doc(db,"scripts",s.docId)));
+    getDocs(collection(db,"scripts",s.docId,"comments")).then(snap=>{
+      const btn = div.querySelector(".commentPreviewBtn");
+      if(btn) btn.textContent = "💬 "+snap.size;
+    });
     list.appendChild(div);
   });
 }
@@ -897,7 +851,6 @@ async function openDM(friendUsername, friendData){
   document.querySelectorAll(".dmConvoItem").forEach(i=>{ if(i.querySelector(".dmConvoName")?.textContent===friendUsername) i.classList.add("active"); });
 
   const main=el("dmMain"); main.innerHTML="";
-
   const header=document.createElement("div"); header.className="dmHeader";
   const hAv=mkAv(friendData.pfp,34,18); hAv.style.cssText="width:34px;height:34px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:18px;background:rgba(0,168,255,0.1);flex-shrink:0;";
   const hName=document.createElement("div"); hName.className="dmHeaderName"; hName.textContent=friendData.username;
@@ -905,7 +858,6 @@ async function openDM(friendUsername, friendData){
 
   const msgs=document.createElement("div"); msgs.className="dmMessages"; main.appendChild(msgs);
 
-  // DM input row with GIF button
   const inputRow=document.createElement("div"); inputRow.className="dmInputRow";
   const gifBtnDM=document.createElement("button"); gifBtnDM.textContent="GIF"; gifBtnDM.className="gifBtn"; gifBtnDM.title="Send GIF";
   const inp=document.createElement("input"); inp.type="text"; inp.placeholder="Message "+friendData.username+"…"; inp.style.marginTop="0";
@@ -921,9 +873,7 @@ async function openDM(friendUsername, friendData){
     await setDoc(doc(db,"dms",roomId,"meta","info"),{[me+"_lastRead"]:Date.now()},{merge:true});
   }
 
-  gifBtnDM.addEventListener("click",()=>{
-    openGifPicker(async(gifUrl)=>{ await sendDM("", gifUrl); });
-  });
+  gifBtnDM.addEventListener("click",()=>{ openGifPicker(async(gifUrl)=>{ await sendDM("", gifUrl); }); });
   sendBtnDM.addEventListener("click",()=>{ const t=inp.value.trim(); if(t) sendDM(t); });
   inp.addEventListener("keydown",e=>{ if(e.key==="Enter"){ const t=inp.value.trim(); if(t) sendDM(t); } });
 
@@ -976,7 +926,6 @@ function listenFriendRequests(){
     const reqs=(snap.data().friendRequests||[]).length;
     el("friendBadge").textContent=reqs; el("friendBadge").style.display=reqs>0?"":"none";
     el("reqBadge").textContent=reqs; el("reqBadge").style.display=reqs>0?"":"none";
-    // FIX: auto-refresh request list on data change
     renderRequests();
   });
 }
@@ -1003,7 +952,7 @@ async function renderUserSearch(){
     const row=document.createElement("div"); row.className="userRow";
     const av=mkAv(u.pfp,40,20);
     const info=document.createElement("div");
-    info.innerHTML=`<div class="userRowName">${u.username}</div><div class="userRowSub">${u.bio||"No bio"}</div>`;
+    info.innerHTML=`<div class="userRowName">${u.username}</div><div class="userRowSub">${u.bio||"No bio"} · ${(u.followers||[]).length} followers</div>`;
     const actions=document.createElement("div"); actions.className="userRowActions";
     const viewBtn=document.createElement("button"); viewBtn.className="btnSecondary"; viewBtn.textContent="View"; viewBtn.style.cssText="margin:0;padding:7px 12px;font-size:12px;";
     viewBtn.addEventListener("click",e=>{ e.stopPropagation(); openUserProfile(u.username); });
@@ -1085,16 +1034,51 @@ async function openUserProfile(username){
   const friends=myData?.friends||[], sent=myData?.sentRequests||[];
   const isFriend=friends.includes(username), isPending=sent.includes(username), isMe=username===me;
   const scriptsSnap=await getDocs(query(collection(db,"scripts"),where("owner","==",username)));
+  const followers=(ud?.followers||[]).length;
+  const following=(ud?.following||[]).length;
+  const isFollowingThem=(myData?.following||[]).includes(username);
+
   el("profileModalTitle").textContent=username+"'s Profile";
   const content=el("profileModalContent"); content.innerHTML="";
+
   const banner=document.createElement("div"); banner.style.cssText="height:60px;background:linear-gradient(135deg,rgba(0,168,255,0.15),rgba(123,95,255,0.15));border-radius:12px;margin-bottom:-30px;";
   const avWrap=document.createElement("div"); avWrap.style.cssText="display:flex;justify-content:center;";
   const av=mkAv(ud?.pfp||"",80,42); av.style.cssText="width:80px;height:80px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:42px;border:3px solid var(--accent);background:rgba(0,168,255,0.1);position:relative;z-index:1;";
   avWrap.appendChild(av);
+
   const body=document.createElement("div"); body.style.cssText="text-align:center;margin-top:10px;";
-  body.innerHTML=`<div style="font-size:22px;font-weight:700;margin-bottom:6px;">${ud?.username||username}</div><div style="color:var(--text-muted);font-size:14px;margin-bottom:16px;">${ud?.bio||"No bio set."}</div><div style="display:flex;justify-content:center;gap:32px;margin-bottom:20px;"><div><div style="font-size:20px;font-weight:700;color:var(--accent);">${scriptsSnap.size}</div><div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;">Scripts</div></div><div><div style="font-size:20px;font-weight:700;color:var(--accent);">${(ud?.friends||[]).length}</div><div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;">Friends</div></div></div>`;
+  body.innerHTML=`
+    <div style="font-size:22px;font-weight:700;margin-bottom:6px;">${ud?.username||username}</div>
+    <div style="color:var(--text-muted);font-size:14px;margin-bottom:16px;">${ud?.bio||"No bio set."}</div>
+    <div style="display:flex;justify-content:center;gap:22px;margin-bottom:20px;flex-wrap:wrap;">
+      <div><div style="font-size:20px;font-weight:700;color:var(--accent);">${scriptsSnap.size}</div><div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;">Scripts</div></div>
+      <div><div style="font-size:20px;font-weight:700;color:var(--accent);">${(ud?.friends||[]).length}</div><div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;">Friends</div></div>
+      <div><div style="font-size:20px;font-weight:700;color:var(--accent);" id="modalFollowerCount">${followers}</div><div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;">Followers</div></div>
+      <div><div style="font-size:20px;font-weight:700;color:var(--accent);">${following}</div><div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;">Following</div></div>
+    </div>`;
+
   const actRow=document.createElement("div"); actRow.style.cssText="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;";
   if(!isMe){
+    // Follow / Unfollow
+    const followBtn=document.createElement("button");
+    followBtn.className="followBtn"+(isFollowingThem?" following":"");
+    followBtn.textContent=isFollowingThem?"✓ Following":"+ Follow";
+    let currentlyFollowing=isFollowingThem;
+    followBtn.addEventListener("click",async()=>{
+      if(currentlyFollowing){
+        await unfollowUser(username);
+        currentlyFollowing=false;
+        followBtn.className="followBtn"; followBtn.textContent="+ Follow";
+        const fc=document.getElementById("modalFollowerCount"); if(fc) fc.textContent=Math.max(0,parseInt(fc.textContent)-1);
+      } else {
+        await followUser(username);
+        currentlyFollowing=true;
+        followBtn.className="followBtn following"; followBtn.textContent="✓ Following";
+        const fc=document.getElementById("modalFollowerCount"); if(fc) fc.textContent=parseInt(fc.textContent)+1;
+      }
+    });
+    actRow.appendChild(followBtn);
+
     if(isFriend){
       const mb=document.createElement("button"); mb.textContent="💬 Message"; mb.style.cssText="margin:0;padding:10px 18px;font-size:13px;";
       mb.addEventListener("click",async()=>{ el("profileOverlay").classList.remove("open"); showTab("dms"); openDM(username, ud); }); actRow.appendChild(mb);
@@ -1114,12 +1098,126 @@ async function openUserProfile(username){
 el("profileCloseBtn").addEventListener("click",()=>el("profileOverlay").classList.remove("open"));
 el("profileOverlay").addEventListener("click",e=>{ if(e.target===el("profileOverlay")) el("profileOverlay").classList.remove("open"); });
 
+// ─── SCRIPT PREVIEW + COMMENTS ────────────────────────────────
+el("previewCloseBtn").addEventListener("click",()=>el("previewOverlay").classList.remove("open"));
+el("previewOverlay").addEventListener("click",e=>{ if(e.target===el("previewOverlay")) el("previewOverlay").classList.remove("open"); });
+
+let commentUnsub = null;
+
+async function openScriptPreview(s){
+  const me = localStorage.getItem("username")||"";
+  const likes = s.likes||[], liked = likes.includes(me);
+
+  el("previewModalTitle").textContent = s.name;
+  const content = el("previewModalContent");
+  content.innerHTML = "";
+
+  const info = document.createElement("div"); info.className="previewInfo";
+  const pfpEl = mkAv(s.ownerPfp||"", 20, 12);
+  pfpEl.style.cssText = "width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:12px;border:none;background:transparent;vertical-align:middle;";
+  info.innerHTML = `<div class="previewName">${s.name}</div><div class="previewId">require(${s.id})</div>`;
+  const meta = document.createElement("div"); meta.className="previewMeta";
+  meta.appendChild(pfpEl);
+  meta.appendChild(Object.assign(document.createElement("span"),{textContent:" "+(s.owner||"unknown"), style:"font-size:13px;color:var(--text-muted);cursor:pointer;"}));
+  meta.lastElementChild.addEventListener("click",()=>{ el("previewOverlay").classList.remove("open"); openUserProfile(s.owner); });
+  info.appendChild(meta);
+  content.appendChild(info);
+
+  const actions = document.createElement("div"); actions.className="previewActions";
+  const copyBtn = document.createElement("button"); copyBtn.textContent="📋 Copy require()"; copyBtn.style.margin="0";
+  copyBtn.addEventListener("click",()=>{ navigator.clipboard.writeText("require("+s.id+")"); copyBtn.textContent="✅ Copied!"; setTimeout(()=>copyBtn.textContent="📋 Copy require()",1500); });
+  const likeBtn = document.createElement("button");
+  likeBtn.className = liked ? "likeBtn liked" : "likeBtn";
+  likeBtn.textContent = (liked?"❤️":"🤍")+" "+likes.length+" like"+(likes.length!==1?"s":"");
+  likeBtn.style.margin="0";
+  likeBtn.addEventListener("click",async()=>{
+    const ref = doc(db,"scripts",s.docId);
+    liked ? await updateDoc(ref,{likes:arrayRemove(me)}) : await updateDoc(ref,{likes:arrayUnion(me)});
+    const updated = (await getDoc(ref)).data();
+    const newLikes = updated.likes||[];
+    const nowLiked = newLikes.includes(me);
+    likeBtn.className = nowLiked ? "likeBtn liked" : "likeBtn";
+    likeBtn.textContent = (nowLiked?"❤️":"🤍")+" "+newLikes.length+" like"+(newLikes.length!==1?"s":"");
+  });
+  if(s.owner===me){
+    const delBtn = document.createElement("button"); delBtn.className="btnDanger"; delBtn.textContent="Delete"; delBtn.style.margin="0";
+    delBtn.addEventListener("click",async()=>{ await deleteDoc(doc(db,"scripts",s.docId)); el("previewOverlay").classList.remove("open"); });
+    actions.appendChild(delBtn);
+  }
+  actions.appendChild(copyBtn); actions.appendChild(likeBtn);
+  content.appendChild(actions);
+
+  const sec = document.createElement("div"); sec.className="commentsSection";
+  const head = document.createElement("div"); head.className="commentsHead";
+  head.innerHTML = `💬 Comments <span class="commentCount" id="commentCount"></span>`;
+  sec.appendChild(head);
+
+  const list = document.createElement("div"); list.className="commentsList"; list.id="commentsList";
+  sec.appendChild(list);
+
+  const addRow = document.createElement("div"); addRow.className="addCommentRow";
+  const inp = document.createElement("input"); inp.type="text"; inp.placeholder="Write a comment…"; inp.style.marginTop="0";
+  const postBtn = document.createElement("button"); postBtn.textContent="Post"; postBtn.style.cssText="margin-top:0;padding:12px 18px;";
+  addRow.appendChild(inp); addRow.appendChild(postBtn);
+  sec.appendChild(addRow);
+  content.appendChild(sec);
+
+  async function postComment(){
+    const text = inp.value.trim(); if(!text) return;
+    inp.value="";
+    try {
+      await addDoc(collection(db,"scripts",s.docId,"comments"),{
+        text, user:me, pfp:localStorage.getItem("pfp")||"", createdAt:serverTimestamp()
+      });
+    } catch(e){ console.error("Comment error:",e); inp.value=text; }
+    inp.disabled=false; postBtn.disabled=false; inp.focus();
+  }
+  postBtn.addEventListener("click",postComment);
+  inp.addEventListener("keydown",e=>{ if(e.key==="Enter") postComment(); });
+
+  if(commentUnsub) commentUnsub();
+  commentUnsub = onSnapshot(
+    query(collection(db,"scripts",s.docId,"comments"), orderBy("createdAt","asc")),
+    snap=>{
+      list.innerHTML="";
+      const countEl = document.getElementById("commentCount");
+      if(countEl) countEl.textContent = "("+snap.size+")";
+      if(snap.empty){ list.innerHTML=`<div style="color:var(--text-dim);font-size:13px;padding:8px 0;">No comments yet — be the first!</div>`; return; }
+      snap.forEach(d=>{
+        const c = d.data();
+        const time = c.createdAt?.toDate ? c.createdAt.toDate().toLocaleDateString([],{month:"short",day:"numeric"}) : "";
+        const item = document.createElement("div"); item.className="commentItem";
+        const headDiv = document.createElement("div"); headDiv.className="commentHead";
+        const av = document.createElement("div"); av.className="commentAv";
+        if(c.pfp && c.pfp.startsWith("data:")){ const img=document.createElement("img"); img.src=c.pfp; av.appendChild(img); }
+        else av.textContent = c.pfp||"?";
+        const user = Object.assign(document.createElement("span"),{className:"commentUser",textContent:c.user});
+        const ts = Object.assign(document.createElement("span"),{className:"commentTime",textContent:time});
+        headDiv.appendChild(av); headDiv.appendChild(user); headDiv.appendChild(ts);
+        if(c.user===me){
+          const delC = document.createElement("button"); delC.className="commentDeleteBtn"; delC.textContent="✕";
+          delC.addEventListener("click",async()=>await deleteDoc(doc(db,"scripts",s.docId,"comments",d.id)));
+          headDiv.appendChild(delC);
+        }
+        const txt = Object.assign(document.createElement("div"),{className:"commentText",textContent:c.text});
+        item.appendChild(headDiv); item.appendChild(txt);
+        list.appendChild(item);
+      });
+      list.scrollTop = list.scrollHeight;
+    }
+  );
+
+  el("previewOverlay").classList.add("open");
+}
+
 // ─── MY PROFILE ──────────────────────────────────────────────
 async function renderMyProfile(){
   const me=localStorage.getItem("username"), ud=await getUserDoc(me);
   const pfp=ud?.pfp||localStorage.getItem("pfp")||"", bio=ud?.bio||localStorage.getItem("bio")||"";
   localStorage.setItem("pfp",pfp); localStorage.setItem("bio",bio);
   const scriptsSnap=await getDocs(query(collection(db,"scripts"),where("owner","==",me)));
+  const followers=(ud?.followers||[]).length;
+  const following=(ud?.following||[]).length;
   const page=el("myProfilePage"); page.innerHTML="";
   const header=document.createElement("div"); header.className="profileHeader";
   const banner=document.createElement("div"); banner.style.cssText="position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(135deg,rgba(0,168,255,0.15),rgba(123,95,255,0.15));z-index:0;";
@@ -1128,7 +1226,15 @@ async function renderMyProfile(){
   const avDiv=document.createElement("div"); avDiv.className="profileAvatar";
   if(pfp.startsWith("data:")){ const img=document.createElement("img"); img.src=pfp; avDiv.appendChild(img); } else avDiv.textContent=pfp||"?";
   const info=document.createElement("div"); info.className="profileInfo";
-  info.innerHTML=`<div class="profileName">${me}</div><div class="profileBio">${bio||"No bio set."}</div><div class="profileStats"><div class="profileStat"><div class="num">${scriptsSnap.size}</div><div class="lbl">Scripts</div></div><div class="profileStat"><div class="num">${(ud?.friends||[]).length}</div><div class="lbl">Friends</div></div></div>`;
+  info.innerHTML=`
+    <div class="profileName">${me}</div>
+    <div class="profileBio">${bio||"No bio set."}</div>
+    <div class="profileStats">
+      <div class="profileStat"><div class="num">${scriptsSnap.size}</div><div class="lbl">Scripts</div></div>
+      <div class="profileStat"><div class="num">${(ud?.friends||[]).length}</div><div class="lbl">Friends</div></div>
+      <div class="profileStat"><div class="num">${followers}</div><div class="lbl">Followers</div></div>
+      <div class="profileStat"><div class="num">${following}</div><div class="lbl">Following</div></div>
+    </div>`;
   row.appendChild(avDiv); row.appendChild(info); header.appendChild(row);
   const actRow=document.createElement("div"); actRow.className="profileActions";
   const editBtn=document.createElement("button"); editBtn.textContent="✏️ Edit Profile"; editBtn.style.margin="0"; editBtn.addEventListener("click",openSettings); actRow.appendChild(editBtn);
