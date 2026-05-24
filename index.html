@@ -25,7 +25,6 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 @keyframes msgIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
 
-/* SIDEBAR */
 .sidebar{position:fixed;left:0;top:0;width:240px;height:100vh;background:#080a10;border-right:1px solid var(--border);padding:28px 16px;display:none;z-index:10;overflow-y:auto;}
 .logo{font-size:22px;font-weight:700;background:var(--accent-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:32px;padding:0 10px;display:block;}
 .navBtn{width:100%;background:transparent;border:1px solid transparent;color:var(--text-muted);padding:12px 14px;border-radius:var(--radius-sm);margin-top:6px;cursor:pointer;text-align:left;font-size:14px;font-family:'Space Grotesk',sans-serif;font-weight:500;transition:all 0.22s var(--ease);display:flex;align-items:center;gap:6px;}
@@ -33,7 +32,6 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
 .navBtn.active{color:var(--accent);border-color:var(--border-glow);background:rgba(0,168,255,0.08);}
 .navBadge{background:var(--danger);color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:20px;margin-left:auto;min-width:18px;text-align:center;}
 
-/* SIDEBAR DM LIST */
 .dmNavList{margin-top:8px;border-top:1px solid var(--border);padding-top:8px;}
 .dmNavItem{display:flex;align-items:center;gap:8px;padding:9px 10px;border-radius:var(--radius-sm);cursor:pointer;transition:background 0.15s;position:relative;}
 .dmNavItem:hover{background:rgba(255,255,255,0.04);}
@@ -43,16 +41,13 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
 .dmNavName{font-size:13px;font-weight:500;color:var(--text-muted);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .dmNavUnread{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;}
 
-/* PANEL */
 .main{margin-left:0;padding:30px;position:relative;z-index:1;}
 .panel{display:none;margin-left:240px;padding:30px;position:relative;z-index:1;}
 
-/* LOGIN */
 .loginBox{width:460px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px 32px;margin:auto;margin-top:60px;box-shadow:0 32px 80px rgba(0,0,0,0.6);animation:fadeUp 0.5s var(--ease) both;}
 .loginBox .logo{font-size:26px;margin-bottom:6px;}
 .loginSub{color:var(--text-muted);font-size:13px;margin-bottom:20px;}
 
-/* AVATAR */
 .avatarSection{margin-top:16px;}
 .avatarLabel{font-size:11px;color:var(--text-muted);letter-spacing:.8px;text-transform:uppercase;margin-bottom:10px;display:block;}
 .avatarTabs{display:flex;gap:8px;margin-bottom:12px;}
@@ -69,7 +64,6 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
 .imgUploadArea p{font-size:13px;color:var(--text-muted);}
 .imgPreview{width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);margin:10px auto 0;display:block;}
 
-/* TOPBAR */
 .topbar{background:var(--bg-card);border:1px solid var(--border);padding:16px 20px;border-radius:var(--radius-lg);display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;box-shadow:0 4px 24px rgba(0,0,0,0.3);}
 .welcome{font-size:20px;font-weight:700;}
 .topbarRight{display:flex;align-items:center;gap:10px;}
@@ -78,11 +72,9 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
 .profileBtn:hover{transform:scale(1.1);box-shadow:0 0 32px rgba(0,168,255,0.5);}
 .profileBtn img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
 
-/* TABS */
 .tabContent{display:none;}
 .tabContent.active{display:block;animation:fadeUp 0.3s var(--ease) both;}
 
-/* CARD GRID */
 .cardGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;}
 .card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;transition:all 0.25s var(--ease);position:relative;overflow:hidden;}
 .card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--accent-grad);opacity:0;transition:opacity 0.25s var(--ease);}
@@ -98,12 +90,10 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
 .likeBtn.liked{background:rgba(239,68,68,0.15)!important;border-color:rgba(239,68,68,0.5)!important;color:#f87171!important;}
 .likeCount{font-size:13px;color:var(--text-muted);}
 
-/* INPUTS */
 input,textarea{width:100%;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text);padding:13px 16px;border-radius:var(--radius-sm);margin-top:12px;outline:none;font-family:'Space Grotesk',sans-serif;font-size:14px;transition:border-color 0.2s,background 0.2s,box-shadow 0.2s;resize:none;}
 input:focus,textarea:focus{border-color:var(--border-glow);background:rgba(0,168,255,0.05);box-shadow:0 0 0 3px rgba(0,168,255,0.1);}
 input::placeholder,textarea::placeholder{color:var(--text-dim);}
 
-/* BUTTONS */
 button{background:var(--accent-grad);border:none;color:white;padding:13px 20px;border-radius:var(--radius-sm);margin-top:12px;cursor:pointer;font-weight:600;font-family:'Space Grotesk',sans-serif;font-size:14px;transition:all 0.22s var(--ease);position:relative;overflow:hidden;}
 button:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,168,255,0.35);}
 button:active{transform:translateY(0);}
@@ -116,16 +106,13 @@ button:active{transform:translateY(0);}
 .btnSuccess{background:linear-gradient(135deg,#22c55e,#16a34a)!important;}
 .btnSuccess:hover{box-shadow:0 8px 24px rgba(34,197,94,0.35)!important;}
 
-/* INPUT GROUP */
 .inputGroup{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin-bottom:22px;}
 .inputGroup h2{font-size:17px;font-weight:700;margin-bottom:4px;}
 .inputGroupSub{color:var(--text-muted);font-size:13px;margin-top:4px;}
 
-/* INVITE */
 .inviteBox{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;}
 .inviteKeyBox{background:rgba(0,168,255,0.06);border:1px solid rgba(0,168,255,0.18);padding:16px 18px;border-radius:var(--radius-md);margin-top:14px;font-weight:700;color:var(--accent);word-break:break-all;font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:1px;}
 
-/* CHAT (global) */
 .chatBox{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:var(--radius-lg);display:flex;flex-direction:column;height:520px;overflow:hidden;}
 .chatMessages{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:10px;}
 .chatMsg{max-width:72%;padding:12px 16px;border-radius:16px;font-size:14px;line-height:1.55;animation:msgIn 0.2s var(--ease) both;}
@@ -140,7 +127,6 @@ button:active{transform:translateY(0);}
 .chatInputRow input{margin-top:0;flex:1;}
 .chatInputRow button{margin-top:0;padding:12px 22px;white-space:nowrap;}
 
-/* DM PANEL */
 .dmLayout{display:flex;gap:0;background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:var(--radius-lg);height:560px;overflow:hidden;}
 .dmSidebar{width:220px;border-right:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0;}
 .dmSidebarHead{padding:14px 16px;border-bottom:1px solid var(--border);font-size:13px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;}
@@ -169,7 +155,6 @@ button:active{transform:translateY(0);}
 .dmEmpty .dmEmptyIcon{font-size:40px;opacity:.4;}
 .dmNoFriends{padding:20px;color:var(--text-dim);font-size:13px;text-align:center;}
 
-/* MODAL OVERLAY */
 .overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.8);align-items:center;justify-content:center;}
 .overlay.open{display:flex;}
 .modal{background:var(--bg-card);border:1px solid rgba(0,168,255,0.2);border-radius:var(--radius-lg);padding:28px;width:400px;max-width:96vw;max-height:90vh;overflow-y:auto;box-shadow:0 40px 100px rgba(0,0,0,0.95);position:relative;animation:fadeUp 0.3s var(--ease) both;}
@@ -189,7 +174,6 @@ button:active{transform:translateY(0);}
 .settPfpBtn:hover{background:rgba(0,168,255,0.1);border-color:rgba(0,168,255,0.35);transform:scale(1.12);box-shadow:none;}
 .settPfpBtn.selected{background:rgba(0,168,255,0.18);border-color:var(--accent);}
 
-/* PROFILE PAGE */
 .profilePage{max-width:720px;}
 .profileHeader{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-bottom:22px;position:relative;overflow:hidden;}
 .profileHeader::before{content:'';position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(135deg,rgba(0,168,255,0.15),rgba(123,95,255,0.15));z-index:0;}
@@ -204,7 +188,6 @@ button:active{transform:translateY(0);}
 .profileActions{display:flex;gap:10px;margin-top:16px;position:relative;z-index:1;flex-wrap:wrap;}
 .profileActions button{margin:0;padding:10px 20px;}
 
-/* FRIENDS / USERS */
 .friendsGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;}
 .friendCard{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:16px;text-align:center;transition:all 0.2s var(--ease);}
 .friendCard:hover{border-color:var(--border-glow);transform:translateY(-2px);}
@@ -230,7 +213,6 @@ button:active{transform:translateY(0);}
 .userRowActions{display:flex;gap:6px;margin-left:auto;align-items:center;flex-shrink:0;}
 .userRowActions button{margin:0;padding:7px 13px;font-size:12px;}
 
-/* SUBTABS */
 .subTabs{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap;}
 .subTab{background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--text-muted);padding:8px 18px;border-radius:var(--radius-sm);cursor:pointer;font-size:13px;font-family:'Space Grotesk',sans-serif;font-weight:500;transition:all 0.2s var(--ease);display:flex;align-items:center;gap:5px;}
 .subTab.active{color:var(--accent);border-color:var(--border-glow);background:rgba(0,168,255,0.08);}
@@ -445,14 +427,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db  = getFirestore(app);
 
-const STATIC_INVITE = "";
+const STATIC_INVITE = "FreeInvite9116X88";
 const AVATARS = ["🐱","🐶","🦊","🐺","🐻","🐼","🐸","🐵","🦁","🐯","🐨","🦝","🐙","🦋","🐲","🦄","🤖","👾","🧙","🧛","🥷","👻","🎭","⚡","🔥","🌊","🍀","🌸","💎","🚀"];
 
-// ─── HELPERS ────────────────────────────────────────────────
 const el = id => document.getElementById(id);
 function setStatus(t){ el("status").textContent = t; }
 
-// Build an avatar element — works for emoji, data-URL images, and empty
 function mkAv(pfp, size=40, fsize=20){
   const wrap = document.createElement("div");
   wrap.style.cssText = `width:${size}px;height:${size}px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:${fsize}px;flex-shrink:0;background:rgba(0,168,255,0.1);border:2px solid rgba(0,168,255,0.2);`;
@@ -641,7 +621,6 @@ function renderScripts(){
     const likes=s.likes||[], liked=likes.includes(me);
     const div=document.createElement("div"); div.className="card";
     const pfp=s.ownerPfp||"";
-    // Badge with avatar — build inline to avoid img src issue
     const avEl=mkAv(pfp,18,11);
     avEl.style.border="none"; avEl.style.background="transparent"; avEl.style.display="inline-flex"; avEl.style.verticalAlign="middle";
     div.innerHTML=`
@@ -724,22 +703,18 @@ async function renderDMSidebar(){
 
 async function openDM(friendUsername, friendData){
   activeDM=friendUsername;
-  // update sidebar highlight
   document.querySelectorAll(".dmConvoItem").forEach(i=>i.classList.remove("active"));
   document.querySelectorAll(".dmConvoItem").forEach(i=>{ if(i.querySelector(".dmConvoName")?.textContent===friendUsername) i.classList.add("active"); });
 
   const main=el("dmMain"); main.innerHTML="";
 
-  // Header
   const header=document.createElement("div"); header.className="dmHeader";
   const hAv=mkAv(friendData.pfp,34,18); hAv.className="dmHeaderAv"; hAv.style.cssText="width:34px;height:34px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:18px;background:rgba(0,168,255,0.1);flex-shrink:0;";
   const hName=document.createElement("div"); hName.className="dmHeaderName"; hName.textContent=friendData.username;
   header.appendChild(hAv); header.appendChild(hName); main.appendChild(header);
 
-  // Messages area
   const msgs=document.createElement("div"); msgs.className="dmMessages"; main.appendChild(msgs);
 
-  // Input row
   const inputRow=document.createElement("div"); inputRow.className="dmInputRow";
   const inp=document.createElement("input"); inp.type="text"; inp.placeholder="Message "+friendData.username+"…"; inp.style.marginTop="0";
   const sendBtnDM=document.createElement("button"); sendBtnDM.textContent="Send"; sendBtnDM.style.marginTop="0"; sendBtnDM.style.padding="10px 18px"; sendBtnDM.style.fontSize="13px";
@@ -751,16 +726,13 @@ async function openDM(friendUsername, friendData){
   async function sendDM(){
     const text=inp.value.trim(); if(!text) return; inp.value="";
     await addDoc(collection(db,"dms",roomId,"messages"),{text,from:me,createdAt:serverTimestamp()});
-    // mark as read for me
     await setDoc(doc(db,"dms",roomId,"meta","info"),{[me+"_lastRead"]:Date.now()},{merge:true});
   }
   sendBtnDM.addEventListener("click",sendDM);
   inp.addEventListener("keydown",e=>{ if(e.key==="Enter") sendDM(); });
 
-  // Mark read when opening
   await setDoc(doc(db,"dms",roomId,"meta","info"),{[me+"_lastRead"]:Date.now()},{merge:true});
 
-  // Listen to messages
   if(dmUnsubscribe) dmUnsubscribe();
   dmUnsubscribe=onSnapshot(query(collection(db,"dms",roomId,"messages"),orderBy("createdAt","asc")),snap=>{
     msgs.innerHTML="";
@@ -778,7 +750,6 @@ async function openDM(friendUsername, friendData){
 }
 
 function listenDMBadge(){
-  // Periodically check for unread DMs
   const me=localStorage.getItem("username"); if(!me) return;
   setInterval(async()=>{
     const ud=await getUserDoc(me);
@@ -806,10 +777,11 @@ function listenFriendRequests(){
     const reqs=(snap.data().friendRequests||[]).length;
     el("friendBadge").textContent=reqs; el("friendBadge").style.display=reqs>0?"":"none";
     el("reqBadge").textContent=reqs; el("reqBadge").style.display=reqs>0?"":"none";
+    // FIX: Auto-refresh request list whenever Firestore data changes
+    renderRequests();
   });
 }
 
-// ── GLOBAL USER SEARCH (show all users, filter by input) ──
 let allUsers=[];
 async function loadAllUsers(){
   const me=localStorage.getItem("username");
@@ -921,7 +893,6 @@ async function openUserProfile(username){
   el("profileModalTitle").textContent=username+"'s Profile";
   const content=el("profileModalContent"); content.innerHTML="";
 
-  // Banner + avatar
   const banner=document.createElement("div"); banner.style.cssText="height:60px;background:linear-gradient(135deg,rgba(0,168,255,0.15),rgba(123,95,255,0.15));border-radius:12px;margin-bottom:-30px;";
   const avWrap=document.createElement("div"); avWrap.style.cssText="display:flex;justify-content:center;";
   const av=mkAv(ud?.pfp||"",80,42);
