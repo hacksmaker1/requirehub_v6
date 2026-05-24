@@ -65,30 +65,19 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
 .profileBtn:hover{transform:scale(1.1);box-shadow:0 0 32px rgba(0,168,255,0.5);}
 .profileBtn img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
 
-/* GIF PICKER */
-.gifBtn{background:rgba(255,255,255,0.06)!important;border:1px solid var(--border)!important;color:var(--text-muted)!important;padding:10px 14px!important;border-radius:var(--radius-sm)!important;margin-top:0!important;font-size:16px!important;cursor:pointer!important;transition:all 0.18s var(--ease)!important;white-space:nowrap!important;}
-.gifBtn:hover{background:rgba(0,168,255,0.1)!important;border-color:var(--border-glow)!important;color:var(--accent)!important;transform:translateY(-1px)!important;box-shadow:none!important;}
-.gifPickerOverlay{display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;}
-.gifPickerOverlay.open{display:flex;}
-.gifPicker{background:var(--bg-card);border:1px solid rgba(0,168,255,0.2);border-radius:var(--radius-lg);padding:20px;width:480px;max-width:96vw;max-height:90vh;display:flex;flex-direction:column;gap:12px;box-shadow:0 40px 100px rgba(0,0,0,0.95);animation:fadeUp 0.3s var(--ease) both;}
-.gifPickerHead{display:flex;justify-content:space-between;align-items:center;}
-.gifPickerHead span{font-size:15px;font-weight:700;}
-.gifSearchRow{display:flex;gap:8px;}
-.gifSearchRow input{margin-top:0;flex:1;}
-.gifSearchRow button{margin-top:0;padding:12px 18px;}
-.gifGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;overflow-y:auto;max-height:320px;align-items:start;}
-.gifItem{border-radius:10px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:all 0.18s var(--ease);line-height:0;}
-.gifItem:hover{border-color:var(--accent);transform:scale(1.03);}
-.gifItem img{width:100%;height:auto;display:block;object-fit:cover;}
-.gifEmpty{color:var(--text-muted);text-align:center;padding:20px;font-size:13px;grid-column:1/-1;}
+/* GIF LINK MODAL */
+.gifLinkModal{width:420px;}
+.gifLinkPreview{margin-top:12px;border-radius:var(--radius-md);overflow:hidden;max-height:200px;display:none;text-align:center;}
+.gifLinkPreview img{max-width:100%;max-height:200px;object-fit:contain;border-radius:var(--radius-md);}
 
+/* CHAT GIF display */
 .chatGif{max-width:200px;border-radius:10px;margin-top:4px;display:block;}
 .dmGif{max-width:200px;border-radius:10px;margin-top:4px;display:block;}
 
 .tabContent{display:none;}
 .tabContent.active{display:block;animation:fadeUp 0.3s var(--ease) both;}
 
-.cardGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;}
+.cardGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;}
 .card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;transition:all 0.25s var(--ease);position:relative;overflow:hidden;}
 .card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--accent-grad);opacity:0;transition:opacity 0.25s var(--ease);}
 .card:hover{border-color:var(--border-glow);background:rgba(0,168,255,0.04);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.4);}
@@ -97,11 +86,27 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
 .requireText{color:var(--accent);word-break:break-all;margin-bottom:12px;font-family:'JetBrains Mono',monospace;font-size:13px;background:rgba(0,168,255,0.06);padding:8px 12px;border-radius:8px;border:1px solid rgba(0,168,255,0.12);}
 .badge{display:inline-flex;align-items:center;gap:5px;background:rgba(123,95,255,0.12);color:#a78bfa;font-size:11px;padding:3px 10px;border-radius:20px;margin-bottom:10px;border:1px solid rgba(123,95,255,0.2);font-weight:500;cursor:pointer;transition:background 0.15s;}
 .badge:hover{background:rgba(123,95,255,0.22);}
-.cardLikeRow{display:flex;align-items:center;gap:8px;margin-top:10px;}
+.cardActionRow{display:flex;align-items:center;gap:6px;margin-top:10px;flex-wrap:wrap;}
 .likeBtn{background:rgba(255,255,255,0.04)!important;border:1px solid var(--border)!important;color:var(--text-muted)!important;padding:7px 14px!important;border-radius:20px!important;font-size:13px!important;margin:0!important;transition:all 0.18s var(--ease)!important;}
 .likeBtn:hover{background:rgba(239,68,68,0.12)!important;border-color:rgba(239,68,68,0.35)!important;color:#f87171!important;transform:scale(1.05)!important;box-shadow:none!important;}
 .likeBtn.liked{background:rgba(239,68,68,0.15)!important;border-color:rgba(239,68,68,0.5)!important;color:#f87171!important;}
-.likeCount{font-size:13px;color:var(--text-muted);}
+.commentBtn{background:rgba(255,255,255,0.04)!important;border:1px solid var(--border)!important;color:var(--text-muted)!important;padding:7px 14px!important;border-radius:20px!important;font-size:13px!important;margin:0!important;transition:all 0.18s var(--ease)!important;}
+.commentBtn:hover{background:rgba(0,168,255,0.1)!important;border-color:var(--border-glow)!important;color:var(--accent)!important;transform:scale(1.05)!important;box-shadow:none!important;}
+.likeCount,.commentCount{font-size:13px;color:var(--text-muted);}
+
+/* COMMENTS SECTION */
+.commentsSection{margin-top:12px;border-top:1px solid var(--border);padding-top:12px;display:none;}
+.commentsSection.open{display:block;}
+.commentItem{display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;animation:msgIn 0.2s var(--ease) both;}
+.commentAv{width:26px;height:26px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:13px;background:rgba(0,168,255,0.1);border:1px solid rgba(0,168,255,0.2);flex-shrink:0;}
+.commentAv img{width:100%;height:100%;object-fit:cover;}
+.commentBody{flex:1;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:10px;padding:8px 12px;}
+.commentUser{font-size:11px;font-weight:700;color:var(--accent);margin-bottom:2px;}
+.commentText{font-size:13px;line-height:1.4;color:var(--text);}
+.commentTime{font-size:10px;color:var(--text-dim);margin-top:3px;}
+.commentInputRow{display:flex;gap:6px;margin-top:8px;}
+.commentInputRow input{margin-top:0;flex:1;padding:9px 12px;font-size:13px;}
+.commentInputRow button{margin-top:0;padding:9px 14px;font-size:12px;}
 
 input,textarea{width:100%;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text);padding:13px 16px;border-radius:var(--radius-sm);margin-top:12px;outline:none;font-family:'Space Grotesk',sans-serif;font-size:14px;transition:border-color 0.2s,background 0.2s,box-shadow 0.2s;resize:none;}
 input:focus,textarea:focus{border-color:var(--border-glow);background:rgba(0,168,255,0.05);box-shadow:0 0 0 3px rgba(0,168,255,0.1);}
@@ -118,6 +123,9 @@ button:active{transform:translateY(0);}
 .btnDanger:hover{box-shadow:0 8px 24px rgba(239,68,68,0.35)!important;}
 .btnSuccess{background:linear-gradient(135deg,#22c55e,#16a34a)!important;}
 .btnSuccess:hover{box-shadow:0 8px 24px rgba(34,197,94,0.35)!important;}
+
+.gifBtn{background:rgba(255,255,255,0.06)!important;border:1px solid var(--border)!important;color:var(--text-muted)!important;padding:10px 14px!important;border-radius:var(--radius-sm)!important;margin-top:0!important;font-size:13px!important;font-weight:600!important;cursor:pointer!important;transition:all 0.18s var(--ease)!important;white-space:nowrap!important;}
+.gifBtn:hover{background:rgba(0,168,255,0.1)!important;border-color:var(--border-glow)!important;color:var(--accent)!important;transform:translateY(-1px)!important;box-shadow:none!important;}
 
 .inputGroup{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin-bottom:22px;}
 .inputGroup h2{font-size:17px;font-weight:700;margin-bottom:4px;}
@@ -147,9 +155,13 @@ button:active{transform:translateY(0);}
 .dmConvoItem{display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer;transition:background 0.15s;border-bottom:1px solid rgba(255,255,255,0.04);position:relative;}
 .dmConvoItem:hover{background:rgba(255,255,255,0.04);}
 .dmConvoItem.active{background:rgba(0,168,255,0.08);}
+.dmConvoAv{width:36px;height:36px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:18px;background:rgba(0,168,255,0.1);border:1px solid rgba(0,168,255,0.2);flex-shrink:0;}
+.dmConvoAv img{width:100%;height:100%;object-fit:cover;}
 .dmConvoName{font-size:13px;font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .dmMain{flex:1;display:flex;flex-direction:column;min-width:0;}
 .dmHeader{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;background:rgba(0,0,0,0.15);}
+.dmHeaderAv{width:34px;height:34px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:18px;background:rgba(0,168,255,0.1);flex-shrink:0;}
+.dmHeaderAv img{width:100%;height:100%;object-fit:cover;}
 .dmHeaderName{font-size:15px;font-weight:700;}
 .dmMessages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:8px;}
 .dmMsg{max-width:75%;padding:10px 14px;border-radius:14px;font-size:14px;line-height:1.5;animation:msgIn 0.2s var(--ease) both;}
@@ -182,6 +194,11 @@ button:active{transform:translateY(0);}
 .settPfpBtn:hover{background:rgba(0,168,255,0.1);border-color:rgba(0,168,255,0.35);transform:scale(1.12);box-shadow:none;}
 .settPfpBtn.selected{background:rgba(0,168,255,0.18);border-color:var(--accent);}
 
+/* FOLLOW BUTTON */
+.followBtn{background:rgba(0,168,255,0.12)!important;border:1px solid rgba(0,168,255,0.3)!important;color:var(--accent)!important;padding:8px 16px!important;border-radius:20px!important;font-size:12px!important;font-weight:700!important;margin:0!important;cursor:pointer!important;transition:all 0.18s var(--ease)!important;}
+.followBtn:hover{background:rgba(0,168,255,0.22)!important;transform:none!important;box-shadow:none!important;}
+.followBtn.following{background:rgba(123,95,255,0.15)!important;border-color:rgba(123,95,255,0.4)!important;color:#a78bfa!important;}
+
 .profilePage{max-width:720px;}
 .profileHeader{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-bottom:22px;position:relative;overflow:hidden;}
 .profileHeader::before{content:'';position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(135deg,rgba(0,168,255,0.15),rgba(123,95,255,0.15));z-index:0;}
@@ -205,6 +222,8 @@ button:active{transform:translateY(0);}
 .friendMeta{font-size:12px;color:var(--text-muted);}
 .requestCard{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:16px;display:flex;align-items:center;gap:14px;margin-bottom:12px;transition:border-color 0.2s;}
 .requestCard:hover{border-color:var(--border-glow);}
+.requestAvatar{width:46px;height:46px;border-radius:50%;background:rgba(0,168,255,0.08);border:2px solid rgba(0,168,255,0.2);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;overflow:hidden;}
+.requestAvatar img{width:100%;height:100%;object-fit:cover;}
 .requestInfo{flex:1;}
 .requestName{font-size:14px;font-weight:600;}
 .requestSub{font-size:12px;color:var(--text-muted);margin-top:2px;}
@@ -212,6 +231,8 @@ button:active{transform:translateY(0);}
 .requestBtns button{margin:0;padding:8px 14px;font-size:12px;}
 .userRow{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:var(--radius-md);cursor:pointer;transition:background 0.15s;border:1px solid transparent;margin-bottom:6px;}
 .userRow:hover{background:rgba(255,255,255,0.04);border-color:var(--border);}
+.userRowAv{width:40px;height:40px;border-radius:50%;background:rgba(0,168,255,0.08);border:2px solid rgba(0,168,255,0.2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;overflow:hidden;}
+.userRowAv img{width:100%;height:100%;object-fit:cover;}
 .userRowName{font-size:14px;font-weight:600;}
 .userRowSub{font-size:12px;color:var(--text-muted);}
 .userRowActions{display:flex;gap:6px;margin-left:auto;align-items:center;flex-shrink:0;}
@@ -225,50 +246,13 @@ button:active{transform:translateY(0);}
 .sectionHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
 .sectionHead h2{font-size:17px;font-weight:700;}
 .status{margin-top:12px;color:#f87171;text-align:center;font-size:13px;font-weight:500;}
+.statusSuccess{margin-top:12px;color:var(--success);text-align:center;font-size:13px;font-weight:500;}
 .emptyMsg{color:var(--text-dim);padding:10px;font-size:14px;}
 
 ::-webkit-scrollbar{width:5px;}
 ::-webkit-scrollbar-track{background:transparent;}
 ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:10px;}
 ::-webkit-scrollbar-thumb:hover{background:rgba(0,168,255,0.35);}
-
-/* SCRIPT PREVIEW MODAL */
-.previewModal{width:560px;max-width:96vw;}
-.previewInfo{background:rgba(0,168,255,0.04);border:1px solid rgba(0,168,255,0.12);border-radius:var(--radius-md);padding:16px 18px;margin-bottom:16px;}
-.previewName{font-size:22px;font-weight:700;margin-bottom:6px;}
-.previewId{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--accent);background:rgba(0,168,255,0.06);padding:10px 14px;border-radius:8px;word-break:break-all;margin-bottom:12px;border:1px solid rgba(0,168,255,0.12);}
-.previewMeta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
-.previewActions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
-.previewActions button{margin:0;}
-
-/* COMMENTS */
-.commentsSection{margin-top:4px;}
-.commentsHead{font-size:14px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
-.commentCount{font-size:12px;color:var(--text-muted);font-weight:400;}
-.commentsList{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;max-height:240px;overflow-y:auto;}
-.commentItem{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:var(--radius-md);padding:12px 14px;transition:border-color 0.2s;}
-.commentItem:hover{border-color:rgba(0,168,255,0.2);}
-.commentHead{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
-.commentAv{width:26px;height:26px;border-radius:50%;background:rgba(0,168,255,0.1);border:1px solid rgba(0,168,255,0.2);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;overflow:hidden;}
-.commentAv img{width:100%;height:100%;object-fit:cover;}
-.commentUser{font-size:12px;font-weight:600;}
-.commentTime{font-size:11px;color:var(--text-dim);margin-left:auto;}
-.commentText{font-size:13px;line-height:1.5;color:var(--text);}
-.commentDeleteBtn{background:none!important;border:none!important;color:var(--text-dim)!important;font-size:12px!important;padding:0 4px!important;margin:0 0 0 auto!important;cursor:pointer!important;opacity:0;transition:opacity 0.15s!important;}
-.commentItem:hover .commentDeleteBtn{opacity:1;}
-.commentDeleteBtn:hover{color:var(--danger)!important;transform:none!important;box-shadow:none!important;}
-.addCommentRow{display:flex;gap:8px;align-items:center;}
-.addCommentRow input{margin-top:0;flex:1;}
-.addCommentRow button{margin-top:0;padding:12px 18px;white-space:nowrap;}
-
-.cardCommentBtn{background:rgba(255,255,255,0.04)!important;border:1px solid var(--border)!important;color:var(--text-muted)!important;padding:7px 14px!important;border-radius:20px!important;font-size:13px!important;margin:0!important;transition:all 0.18s var(--ease)!important;}
-.cardCommentBtn:hover{background:rgba(0,168,255,0.1)!important;border-color:rgba(0,168,255,0.35)!important;color:var(--accent)!important;transform:scale(1.05)!important;box-shadow:none!important;}
-
-/* FOLLOW BUTTON */
-.followBtn{background:rgba(0,168,255,0.12)!important;border:1px solid rgba(0,168,255,0.3)!important;color:var(--accent)!important;padding:10px 20px!important;border-radius:var(--radius-sm)!important;font-size:13px!important;font-weight:600!important;margin:0!important;transition:all 0.2s var(--ease)!important;cursor:pointer!important;}
-.followBtn:hover{background:rgba(0,168,255,0.22)!important;box-shadow:0 0 16px rgba(0,168,255,0.25)!important;transform:translateY(-1px)!important;}
-.followBtn.following{background:rgba(255,255,255,0.06)!important;border-color:var(--border)!important;color:var(--text-muted)!important;}
-.followBtn.following:hover{background:rgba(239,68,68,0.1)!important;border-color:rgba(239,68,68,0.3)!important;color:#f87171!important;}
 </style>
 </head>
 <body>
@@ -336,8 +320,27 @@ button:active{transform:translateY(0);}
     <div class="inputGroup">
       <h2>Add Require Script</h2>
       <p class="inputGroupSub">Share a script with the community</p>
-      <input type="text" id="scriptName" placeholder="Script Name">
-      <input type="text" id="requireID" placeholder="Require Text (e.g. 123456789)">
+      <input type="text" id="scriptName" placeholder="Script Name (e.g. My Admin Script)">
+      <input type="text" id="requireID" placeholder="Your require text (e.g. require(12345678))">
+      <p style="font-size:12px;color:var(--text-muted);margin-top:6px;">📋 Paste your require text exactly as-is — it will be shown and copied without any changes</p>
+      <!-- THUMBNAIL -->
+      <div style="margin-top:16px;">
+        <span style="font-size:11px;color:var(--text-muted);letter-spacing:.8px;text-transform:uppercase;display:block;margin-bottom:8px;">🖼️ Thumbnail <span style="color:var(--text-dim);font-size:10px;text-transform:none;letter-spacing:0;">(optional)</span></span>
+        <div style="display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap;">
+          <div id="thumbUploadArea" style="flex:1;min-width:160px;border:2px dashed rgba(255,255,255,0.08);border-radius:12px;padding:14px;text-align:center;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden;">
+            <input type="file" id="thumbFileInput" accept="image/*" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;margin:0;padding:0;">
+            <div style="font-size:22px;margin-bottom:4px;">📁</div>
+            <p style="font-size:12px;color:var(--text-muted);">Upload image</p>
+            <p style="font-size:10px;color:var(--text-dim);margin-top:2px;">JPG, PNG, GIF · max 2MB</p>
+          </div>
+          <div style="display:flex;flex-direction:column;justify-content:center;color:var(--text-dim);font-size:12px;padding:12px 4px;">or</div>
+          <input type="text" id="thumbUrlInput" placeholder="Paste image URL…" style="flex:2;min-width:160px;margin-top:0;">
+        </div>
+        <div id="thumbPreviewWrap" style="display:none;margin-top:10px;position:relative;">
+          <img id="thumbPreviewImg" src="" alt="Thumbnail preview" style="width:100%;max-height:140px;object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,0.08);display:block;">
+          <button id="thumbClearBtn" type="button" style="position:absolute;top:6px;right:6px;width:26px;height:26px;border-radius:50%;background:rgba(0,0,0,0.75);border:1px solid rgba(255,255,255,0.2);color:white;font-size:11px;padding:0;margin:0;cursor:pointer;display:flex;align-items:center;justify-content:center;">✕</button>
+        </div>
+      </div>
       <button id="addScriptBtn">Add Script</button>
     </div>
     <div class="cardGrid" id="scriptList"></div>
@@ -348,7 +351,7 @@ button:active{transform:translateY(0);}
     <div class="chatBox">
       <div class="chatMessages" id="chatMessages"><div class="emptyMsg">No messages yet. Say hi! 👋</div></div>
       <div class="chatInputRow">
-        <button class="gifBtn" id="globalGifBtn" title="Send GIF">GIF</button>
+        <button class="gifBtn" id="globalGifBtn" title="Send GIF">🎞️ GIF</button>
         <input type="text" id="chatInput" placeholder="Type a message…">
         <button id="sendBtn">Send</button>
       </div>
@@ -360,7 +363,7 @@ button:active{transform:translateY(0);}
     <div class="dmLayout">
       <div class="dmSidebar">
         <div class="dmSidebarHead">Messages</div>
-        <div class="dmConvoList" id="dmConvoList"><div class="dmNoFriends">Add friends to start chatting privately!</div></div>
+        <div class="dmConvoList" id="dmConvoList"><div class="dmNoFriends">Add friends to start chatting!</div></div>
       </div>
       <div class="dmMain" id="dmMain">
         <div class="dmEmpty"><div class="dmEmptyIcon">💬</div><span>Select a friend to chat</span></div>
@@ -450,31 +453,20 @@ button:active{transform:translateY(0);}
   </div>
 </div>
 
-<!-- GIF PICKER -->
-<div class="gifPickerOverlay" id="gifPickerOverlay">
-  <div class="gifPicker">
-    <div class="gifPickerHead">
-      <span>🎞️ Send a GIF</span>
-      <button class="closeBtn" id="gifCloseBtn">✕</button>
-    </div>
-    <div class="gifSearchRow">
-      <input type="text" id="gifSearchInput" placeholder="Search GIFs… (e.g. 'funny cat')">
-      <button id="gifSearchBtn">Search</button>
-    </div>
-    <div class="gifGrid" id="gifGrid">
-      <div class="gifEmpty">Search for a GIF above to get started 🎉</div>
-    </div>
-  </div>
-</div>
-
-<!-- SCRIPT PREVIEW MODAL -->
-<div class="overlay" id="previewOverlay">
-  <div class="modal previewModal">
+<!-- GIF LINK MODAL -->
+<div class="overlay" id="gifLinkOverlay">
+  <div class="modal gifLinkModal">
     <div class="modalHead">
-      <span id="previewModalTitle">Script Preview</span>
-      <button class="closeBtn" id="previewCloseBtn">✕</button>
+      <span>🎞️ Send GIF by Link</span>
+      <button class="closeBtn" id="gifLinkCloseBtn">✕</button>
     </div>
-    <div id="previewModalContent"></div>
+    <p style="font-size:13px;color:var(--text-muted);margin-bottom:4px;">Paste a direct GIF/image URL (e.g. from Tenor, Giphy, Imgur…)</p>
+    <input type="text" id="gifLinkInput" placeholder="https://media.tenor.com/... or https://i.giphy.com/...">
+    <div class="gifLinkPreview" id="gifLinkPreview"><img id="gifLinkPreviewImg" src="" alt="Preview"></div>
+    <div style="display:flex;gap:8px;margin-top:12px;">
+      <button class="btnSecondary" id="gifLinkPreviewBtn" style="margin:0;flex:1;padding:12px;">Preview</button>
+      <button id="gifLinkSendBtn" style="margin:0;flex:1;padding:12px;">Send GIF</button>
+    </div>
   </div>
 </div>
 
@@ -483,7 +475,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/fireba
 import {
   getFirestore, collection, addDoc, deleteDoc, doc,
   onSnapshot, query, orderBy, serverTimestamp, getDoc,
-  setDoc, updateDoc, arrayUnion, arrayRemove, getDocs, where
+  setDoc, updateDoc, arrayUnion, arrayRemove, getDocs, where, limit
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -501,7 +493,11 @@ const STATIC_INVITE = "FreeInvite9116X88";
 const AVATARS = ["🐱","🐶","🦊","🐺","🐻","🐼","🐸","🐵","🦁","🐯","🐨","🦝","🐙","🦋","🐲","🦄","🤖","👾","🧙","🧛","🥷","👻","🎭","⚡","🔥","🌊","🍀","🌸","💎","🚀"];
 
 const el = id => document.getElementById(id);
-function setStatus(t){ el("status").textContent = t; }
+function setStatus(t, success=false){
+  const s = el("status");
+  s.textContent = t;
+  s.className = success ? "statusSuccess" : "status";
+}
 
 function mkAv(pfp, size=40, fsize=20){
   const wrap = document.createElement("div");
@@ -545,67 +541,40 @@ async function getInviteKey(){
   } catch { return STATIC_INVITE; }
 }
 
-// ─── FOLLOW SYSTEM ───────────────────────────────────────────
-async function followUser(targetUsername){
-  const me = localStorage.getItem("username");
-  await updateDoc(doc(db,"users",me),{following:arrayUnion(targetUsername)});
-  await updateDoc(doc(db,"users",targetUsername),{followers:arrayUnion(me)});
-}
-async function unfollowUser(targetUsername){
-  const me = localStorage.getItem("username");
-  await updateDoc(doc(db,"users",me),{following:arrayRemove(targetUsername)});
-  await updateDoc(doc(db,"users",targetUsername),{followers:arrayRemove(me)});
-}
+// ─── GIF LINK MODAL ──────────────────────────────────────────
+let gifLinkCallback = null;
 
-// ─── GIF PICKER ──────────────────────────────────────────────
-let gifCallback = null;
-
-function openGifPicker(onSelect){
-  gifCallback = onSelect;
-  el("gifPickerOverlay").classList.add("open");
-  el("gifSearchInput").value = "";
-  el("gifGrid").innerHTML = `<div class="gifEmpty">Search for a GIF above to get started 🎉</div>`;
-  setTimeout(()=>el("gifSearchInput").focus(),100);
-  loadGifs("trending");
+function openGifLink(onSend){
+  gifLinkCallback = onSend;
+  el("gifLinkInput").value = "";
+  el("gifLinkPreview").style.display = "none";
+  el("gifLinkPreviewImg").src = "";
+  el("gifLinkOverlay").classList.add("open");
+  setTimeout(()=>el("gifLinkInput").focus(), 100);
 }
 
-el("gifCloseBtn").addEventListener("click",()=>el("gifPickerOverlay").classList.remove("open"));
-el("gifPickerOverlay").addEventListener("click",e=>{ if(e.target===el("gifPickerOverlay")) el("gifPickerOverlay").classList.remove("open"); });
-el("gifSearchBtn").addEventListener("click",()=>{ const q=el("gifSearchInput").value.trim(); loadGifs(q||"trending"); });
-el("gifSearchInput").addEventListener("keydown",e=>{ if(e.key==="Enter"){ const q=el("gifSearchInput").value.trim(); loadGifs(q||"trending"); } });
+el("gifLinkCloseBtn").addEventListener("click",()=>el("gifLinkOverlay").classList.remove("open"));
+el("gifLinkOverlay").addEventListener("click",e=>{ if(e.target===el("gifLinkOverlay")) el("gifLinkOverlay").classList.remove("open"); });
 
-async function loadGifs(searchQuery){
-  const grid = el("gifGrid");
-  grid.innerHTML = `<div class="gifEmpty" style="animation:pulse 1s infinite;">Loading GIFs…</div>`;
-  try {
-    const isTrending = searchQuery === "trending";
-    const url = isTrending
-      ? `https://g.tenor.com/v1/trending?key=LIVDSRZULELA&limit=18&media_filter=minimal`
-      : `https://g.tenor.com/v1/search?q=${encodeURIComponent(searchQuery)}&key=LIVDSRZULELA&limit=18&media_filter=minimal`;
-    const res = await fetch(url);
-    const data = await res.json();
-    grid.innerHTML = "";
-    if(!data.results?.length){ grid.innerHTML=`<div class="gifEmpty">No GIFs found. Try another search!</div>`; return; }
-    data.results.forEach(r=>{
-      const gifUrl = r.media?.[0]?.tinygif?.url || r.media?.[0]?.gif?.url;
-      if(!gifUrl) return;
-      const item = document.createElement("div"); item.className = "gifItem";
-      const img = document.createElement("img"); img.src = gifUrl; img.alt = r.content_description || "GIF";
-      img.loading = "lazy";
-      item.appendChild(img);
-      item.addEventListener("click",()=>{
-        el("gifPickerOverlay").classList.remove("open");
-        if(gifCallback) gifCallback(gifUrl);
-      });
-      grid.appendChild(item);
-    });
-  } catch(e) {
-    grid.innerHTML = `<div class="gifEmpty">⚠️ Could not load GIFs. Check your connection.</div>`;
-  }
-}
+el("gifLinkPreviewBtn").addEventListener("click",()=>{
+  const url = el("gifLinkInput").value.trim();
+  if(!url){ alert("Please enter a URL first!"); return; }
+  el("gifLinkPreviewImg").src = url;
+  el("gifLinkPreview").style.display = "block";
+});
 
+el("gifLinkSendBtn").addEventListener("click",()=>{
+  const url = el("gifLinkInput").value.trim();
+  if(!url){ alert("Please enter a GIF URL!"); return; }
+  el("gifLinkOverlay").classList.remove("open");
+  if(gifLinkCallback) gifLinkCallback(url);
+});
+
+el("gifLinkInput").addEventListener("keydown",e=>{ if(e.key==="Enter") el("gifLinkPreviewBtn").click(); });
+
+// GIF button for global chat
 el("globalGifBtn").addEventListener("click",()=>{
-  openGifPicker(async (gifUrl)=>{
+  openGifLink(async(gifUrl)=>{
     const me = localStorage.getItem("username")||"unknown";
     await addDoc(collection(db,"messages"),{
       text:"", gif:gifUrl,
@@ -614,6 +583,37 @@ el("globalGifBtn").addEventListener("click",()=>{
     });
   });
 });
+
+// ─── THUMBNAIL PICKER ───────────────────────────────────────
+let thumbData = null; // base64 or URL
+
+function showThumbPreview(src){
+  thumbData = src;
+  el("thumbPreviewImg").src = src;
+  el("thumbPreviewWrap").style.display = "block";
+}
+function clearThumb(){
+  thumbData = null;
+  el("thumbPreviewImg").src = "";
+  el("thumbPreviewWrap").style.display = "none";
+  el("thumbUrlInput").value = "";
+  el("thumbFileInput").value = "";
+}
+
+el("thumbFileInput").addEventListener("change", e=>{
+  const file = e.target.files[0]; if(!file) return;
+  if(file.size > 2097152){ alert("Image too large (max 2MB)"); return; }
+  const r = new FileReader();
+  r.onload = ev => showThumbPreview(ev.target.result);
+  r.readAsDataURL(file);
+});
+
+el("thumbUrlInput").addEventListener("input", e=>{
+  const url = e.target.value.trim();
+  if(url){ showThumbPreview(url); } else { clearThumb(); }
+});
+
+el("thumbClearBtn").addEventListener("click", e=>{ e.preventDefault(); clearThumb(); });
 
 // ─── SIGNUP PFP PICKER ──────────────────────────────────────
 let signupPfp = AVATARS[0], signupImgData = null;
@@ -671,13 +671,16 @@ el("signInBtn").addEventListener("click",async()=>{
     const validKey=await getInviteKey();
     if(invite!==validKey && invite!==STATIC_INVITE){ setStatus("Wrong invite key"); return; }
     const existing=await getUserDoc(user);
-    if(existing){ setStatus("Username already taken"); return; }
+    if(existing){
+      setStatus("❌ This username is already taken! Please choose something else.");
+      return;
+    }
     const pfpFinal=signupImgData||signupPfp;
     const bio=el("bioField").value.trim();
     await saveUserDoc(user,{
-      username:user,password:pass,pfp:pfpFinal,bio,
-      friends:[],friendRequests:[],sentRequests:[],
-      followers:[],following:[],
+      username:user, password:pass, pfp:pfpFinal, bio,
+      friends:[], friendRequests:[], sentRequests:[],
+      followers:[], following:[],
       createdAt:new Date().toISOString()
     });
     localStorage.setItem("loggedIn","true"); localStorage.setItem("username",user);
@@ -735,9 +738,14 @@ el("genInviteBtn").addEventListener("click",async()=>{
 
 // ─── SCRIPTS ─────────────────────────────────────────────────
 el("addScriptBtn").addEventListener("click",async()=>{
-  const name=el("scriptName").value.trim(), id=el("requireID").value.trim(); if(!name||!id) return;
-  await addDoc(collection(db,"scripts"),{name,id,owner:localStorage.getItem("username")||"unknown",ownerPfp:localStorage.getItem("pfp")||"",likes:[],createdAt:serverTimestamp()});
+  const name=el("scriptName").value.trim();
+  const rawId=el("requireID").value.trim();
+  if(!name||!rawId) return;
+  // Store exactly what the user typed — no wrapping, no modification
+  await addDoc(collection(db,"scripts"),{name,id:rawId,thumbnail:thumbData||null,owner:localStorage.getItem("username")||"unknown",ownerPfp:localStorage.getItem("pfp")||"",likes:[],createdAt:serverTimestamp()});
   el("scriptName").value=""; el("requireID").value="";
+  clearThumb();
+
 });
 el("searchBar").addEventListener("keyup",renderScripts);
 
@@ -747,6 +755,7 @@ function startScripts(){
     allScripts=snap.docs.map(d=>({docId:d.id,...d.data()})); renderScripts();
   });
 }
+
 function renderScripts(){
   const list=el("scriptList"), search=el("searchBar").value.toLowerCase(), me=localStorage.getItem("username")||"";
   list.innerHTML="";
@@ -758,33 +767,106 @@ function renderScripts(){
     const pfp=s.ownerPfp||"";
     const avEl=mkAv(pfp,18,11);
     avEl.style.border="none"; avEl.style.background="transparent"; avEl.style.display="inline-flex"; avEl.style.verticalAlign="middle";
+
     div.innerHTML=`
+      ${s.thumbnail ? `<img src="${s.thumbnail}" alt="thumbnail" style="width:100%;height:120px;object-fit:cover;border-radius:10px;margin-bottom:12px;border:1px solid rgba(255,255,255,0.06);" onerror="this.style.display='none'">` : ""}
       <div class="badge ownerBadge" style="cursor:pointer;"></div>
       <div class="cardTitle">${s.name}</div>
-      <div class="requireText">require(${s.id})</div>
+      <div class="requireText">${s.id}</div>
       <div class="rowBtns">
         <button class="copyBtn">📋 Copy</button>
-        <button class="previewBtn btnSecondary">👁 Preview</button>
-        ${s.owner===me?`<button class="btnDanger deleteBtn">Delete</button>`:""}
+        ${s.owner===me?`<button class="btnDanger deleteBtn" style="flex:none;padding:10px 14px;">Delete</button>`:""}
       </div>
-      <div class="cardLikeRow">
+      <div class="cardActionRow">
         <button class="likeBtn${liked?" liked":""}">${liked?"❤️":"🤍"} Like</button>
         <span class="likeCount">${likes.length} like${likes.length!==1?"s":""}</span>
-        <button class="cardCommentBtn commentPreviewBtn">💬</button>
-      </div>`;
+        <button class="commentBtn">💬 Comments</button>
+        <span class="commentCount" id="ccount-${s.docId}">…</span>
+      </div>
+      <div class="commentsSection" id="comments-${s.docId}"></div>`;
+
     const badge=div.querySelector(".ownerBadge");
     badge.appendChild(avEl); badge.appendChild(document.createTextNode(" "+(s.owner||"unknown")));
     badge.addEventListener("click",()=>openUserProfile(s.owner));
-    div.querySelector(".copyBtn").addEventListener("click",()=>{ navigator.clipboard.writeText(`require(${s.id})`); div.querySelector(".copyBtn").textContent="✅ Copied!"; setTimeout(()=>div.querySelector(".copyBtn").textContent="📋 Copy",1500); });
-    div.querySelector(".previewBtn").addEventListener("click",()=>openScriptPreview(s));
-    div.querySelector(".commentPreviewBtn").addEventListener("click",()=>openScriptPreview(s));
-    div.querySelector(".likeBtn").addEventListener("click",async()=>{ const ref=doc(db,"scripts",s.docId); liked?await updateDoc(ref,{likes:arrayRemove(me)}):await updateDoc(ref,{likes:arrayUnion(me)}); });
-    if(s.owner===me) div.querySelector(".deleteBtn").addEventListener("click",async()=>await deleteDoc(doc(db,"scripts",s.docId)));
-    getDocs(collection(db,"scripts",s.docId,"comments")).then(snap=>{
-      const btn = div.querySelector(".commentPreviewBtn");
-      if(btn) btn.textContent = "💬 "+snap.size;
+
+    div.querySelector(".copyBtn").addEventListener("click",()=>{
+      navigator.clipboard.writeText(s.id);
+      div.querySelector(".copyBtn").textContent="✅ Copied!";
+      setTimeout(()=>div.querySelector(".copyBtn").textContent="📋 Copy",1500);
     });
+
+    div.querySelector(".likeBtn").addEventListener("click",async()=>{
+      const ref=doc(db,"scripts",s.docId);
+      liked?await updateDoc(ref,{likes:arrayRemove(me)}):await updateDoc(ref,{likes:arrayUnion(me)});
+    });
+
+    if(s.owner===me) div.querySelector(".deleteBtn").addEventListener("click",async()=>await deleteDoc(doc(db,"scripts",s.docId)));
+
+    // Comments toggle
+    const commentBtn = div.querySelector(".commentBtn");
+    const commentsSection = div.querySelector(`#comments-${s.docId}`);
+    let commentsLoaded = false;
+    commentBtn.addEventListener("click",()=>{
+      commentsSection.classList.toggle("open");
+      if(commentsSection.classList.contains("open") && !commentsLoaded){
+        commentsLoaded = true;
+        loadComments(s.docId, commentsSection, div.querySelector(`#ccount-${s.docId}`));
+      }
+    });
+
+    // Load comment count immediately
+    getDocs(collection(db,"scripts",s.docId,"comments")).then(snap=>{
+      const cc = div.querySelector(`#ccount-${s.docId}`);
+      if(cc) cc.textContent = snap.size+" comment"+(snap.size!==1?"s":"");
+    });
+
     list.appendChild(div);
+  });
+}
+
+// ─── COMMENTS ────────────────────────────────────────────────
+function loadComments(scriptId, section, countEl){
+  section.innerHTML = "";
+  const me = localStorage.getItem("username")||"unknown";
+  const commentsDiv = document.createElement("div");
+  commentsDiv.style.cssText = "max-height:220px;overflow-y:auto;margin-bottom:8px;";
+
+  const inputRow = document.createElement("div"); inputRow.className="commentInputRow";
+  const inp = document.createElement("input"); inp.type="text"; inp.placeholder="Write a comment…"; inp.style.marginTop="0";
+  const sendBtn = document.createElement("button"); sendBtn.textContent="Post"; sendBtn.style.cssText="margin:0;padding:9px 14px;font-size:12px;";
+  inputRow.appendChild(inp); inputRow.appendChild(sendBtn);
+
+  section.appendChild(commentsDiv);
+  section.appendChild(inputRow);
+
+  async function postComment(){
+    const text = inp.value.trim(); if(!text) return;
+    inp.value = ""; inp.disabled=true; sendBtn.disabled=true;
+    const pfp = localStorage.getItem("pfp")||"";
+    await addDoc(collection(db,"scripts",scriptId,"comments"),{
+      text, user:me, pfp, createdAt:serverTimestamp()
+    });
+    inp.disabled=false; sendBtn.disabled=false; inp.focus();
+  }
+  sendBtn.addEventListener("click",postComment);
+  inp.addEventListener("keydown",e=>{ if(e.key==="Enter") postComment(); });
+
+  onSnapshot(query(collection(db,"scripts",scriptId,"comments"),orderBy("createdAt","asc")),snap=>{
+    commentsDiv.innerHTML="";
+    if(snap.empty){ commentsDiv.innerHTML=`<p style="color:var(--text-dim);font-size:13px;padding:4px 0;">No comments yet. Be the first!</p>`; }
+    snap.forEach(d=>{
+      const c=d.data();
+      const item=document.createElement("div"); item.className="commentItem";
+      const av=document.createElement("div"); av.className="commentAv";
+      if(c.pfp&&c.pfp.startsWith("data:")){ const img=document.createElement("img"); img.src=c.pfp; av.appendChild(img); } else av.textContent=c.pfp||"?";
+      const body=document.createElement("div"); body.className="commentBody";
+      const time=c.createdAt?.toDate?c.createdAt.toDate().toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"}):"";
+      body.innerHTML=`<div class="commentUser">${c.user}</div><div class="commentText">${c.text}</div><div class="commentTime">${time}</div>`;
+      item.appendChild(av); item.appendChild(body);
+      commentsDiv.appendChild(item);
+    });
+    commentsDiv.scrollTop=commentsDiv.scrollHeight;
+    if(countEl) countEl.textContent=snap.size+" comment"+(snap.size!==1?"s":"");
   });
 }
 
@@ -851,6 +933,7 @@ async function openDM(friendUsername, friendData){
   document.querySelectorAll(".dmConvoItem").forEach(i=>{ if(i.querySelector(".dmConvoName")?.textContent===friendUsername) i.classList.add("active"); });
 
   const main=el("dmMain"); main.innerHTML="";
+
   const header=document.createElement("div"); header.className="dmHeader";
   const hAv=mkAv(friendData.pfp,34,18); hAv.style.cssText="width:34px;height:34px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:18px;background:rgba(0,168,255,0.1);flex-shrink:0;";
   const hName=document.createElement("div"); hName.className="dmHeaderName"; hName.textContent=friendData.username;
@@ -859,7 +942,7 @@ async function openDM(friendUsername, friendData){
   const msgs=document.createElement("div"); msgs.className="dmMessages"; main.appendChild(msgs);
 
   const inputRow=document.createElement("div"); inputRow.className="dmInputRow";
-  const gifBtnDM=document.createElement("button"); gifBtnDM.textContent="GIF"; gifBtnDM.className="gifBtn"; gifBtnDM.title="Send GIF";
+  const gifBtnDM=document.createElement("button"); gifBtnDM.textContent="🎞️ GIF"; gifBtnDM.className="gifBtn"; gifBtnDM.title="Send GIF";
   const inp=document.createElement("input"); inp.type="text"; inp.placeholder="Message "+friendData.username+"…"; inp.style.marginTop="0";
   const sendBtnDM=document.createElement("button"); sendBtnDM.textContent="Send"; sendBtnDM.style.cssText="margin-top:0;padding:10px 18px;font-size:13px;";
   inputRow.appendChild(gifBtnDM); inputRow.appendChild(inp); inputRow.appendChild(sendBtnDM); main.appendChild(inputRow);
@@ -873,7 +956,9 @@ async function openDM(friendUsername, friendData){
     await setDoc(doc(db,"dms",roomId,"meta","info"),{[me+"_lastRead"]:Date.now()},{merge:true});
   }
 
-  gifBtnDM.addEventListener("click",()=>{ openGifPicker(async(gifUrl)=>{ await sendDM("", gifUrl); }); });
+  gifBtnDM.addEventListener("click",()=>{
+    openGifLink(async(gifUrl)=>{ await sendDM("", gifUrl); });
+  });
   sendBtnDM.addEventListener("click",()=>{ const t=inp.value.trim(); if(t) sendDM(t); });
   inp.addEventListener("keydown",e=>{ if(e.key==="Enter"){ const t=inp.value.trim(); if(t) sendDM(t); } });
 
@@ -952,7 +1037,7 @@ async function renderUserSearch(){
     const row=document.createElement("div"); row.className="userRow";
     const av=mkAv(u.pfp,40,20);
     const info=document.createElement("div");
-    info.innerHTML=`<div class="userRowName">${u.username}</div><div class="userRowSub">${u.bio||"No bio"} · ${(u.followers||[]).length} followers</div>`;
+    info.innerHTML=`<div class="userRowName">${u.username}</div><div class="userRowSub">${u.bio||"No bio"}</div>`;
     const actions=document.createElement("div"); actions.className="userRowActions";
     const viewBtn=document.createElement("button"); viewBtn.className="btnSecondary"; viewBtn.textContent="View"; viewBtn.style.cssText="margin:0;padding:7px 12px;font-size:12px;";
     viewBtn.addEventListener("click",e=>{ e.stopPropagation(); openUserProfile(u.username); });
@@ -1027,57 +1112,52 @@ async function renderFriends(){
   }
 }
 
+// ─── FOLLOWERS ───────────────────────────────────────────────
+async function toggleFollow(targetUsername){
+  const me=localStorage.getItem("username"); if(!me||me===targetUsername) return;
+  const myData=await getUserDoc(me);
+  const following=myData?.following||[];
+  if(following.includes(targetUsername)){
+    // Unfollow
+    await updateDoc(doc(db,"users",me),{following:arrayRemove(targetUsername)});
+    await updateDoc(doc(db,"users",targetUsername),{followers:arrayRemove(me)});
+  } else {
+    // Follow
+    await updateDoc(doc(db,"users",me),{following:arrayUnion(targetUsername)});
+    await updateDoc(doc(db,"users",targetUsername),{followers:arrayUnion(me)});
+  }
+}
+
 // ─── VIEW PROFILE MODAL ──────────────────────────────────────
 async function openUserProfile(username){
   const ud=await getUserDoc(username), me=localStorage.getItem("username");
   const myData=await getUserDoc(me);
-  const friends=myData?.friends||[], sent=myData?.sentRequests||[];
+  const friends=myData?.friends||[], sent=myData?.sentRequests||[], myFollowing=myData?.following||[];
   const isFriend=friends.includes(username), isPending=sent.includes(username), isMe=username===me;
+  const isFollowing=myFollowing.includes(username);
   const scriptsSnap=await getDocs(query(collection(db,"scripts"),where("owner","==",username)));
-  const followers=(ud?.followers||[]).length;
-  const following=(ud?.following||[]).length;
-  const isFollowingThem=(myData?.following||[]).includes(username);
-
+  const followers=ud?.followers||[], following=ud?.following||[];
   el("profileModalTitle").textContent=username+"'s Profile";
   const content=el("profileModalContent"); content.innerHTML="";
-
   const banner=document.createElement("div"); banner.style.cssText="height:60px;background:linear-gradient(135deg,rgba(0,168,255,0.15),rgba(123,95,255,0.15));border-radius:12px;margin-bottom:-30px;";
   const avWrap=document.createElement("div"); avWrap.style.cssText="display:flex;justify-content:center;";
   const av=mkAv(ud?.pfp||"",80,42); av.style.cssText="width:80px;height:80px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:42px;border:3px solid var(--accent);background:rgba(0,168,255,0.1);position:relative;z-index:1;";
   avWrap.appendChild(av);
-
   const body=document.createElement("div"); body.style.cssText="text-align:center;margin-top:10px;";
-  body.innerHTML=`
-    <div style="font-size:22px;font-weight:700;margin-bottom:6px;">${ud?.username||username}</div>
-    <div style="color:var(--text-muted);font-size:14px;margin-bottom:16px;">${ud?.bio||"No bio set."}</div>
-    <div style="display:flex;justify-content:center;gap:22px;margin-bottom:20px;flex-wrap:wrap;">
-      <div><div style="font-size:20px;font-weight:700;color:var(--accent);">${scriptsSnap.size}</div><div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;">Scripts</div></div>
-      <div><div style="font-size:20px;font-weight:700;color:var(--accent);">${(ud?.friends||[]).length}</div><div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;">Friends</div></div>
-      <div><div style="font-size:20px;font-weight:700;color:var(--accent);" id="modalFollowerCount">${followers}</div><div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;">Followers</div></div>
-      <div><div style="font-size:20px;font-weight:700;color:var(--accent);">${following}</div><div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;">Following</div></div>
-    </div>`;
-
+  body.innerHTML=`<div style="font-size:22px;font-weight:700;margin-bottom:6px;">${ud?.username||username}</div><div style="color:var(--text-muted);font-size:14px;margin-bottom:16px;">${ud?.bio||"No bio set."}</div><div style="display:flex;justify-content:center;gap:24px;margin-bottom:20px;flex-wrap:wrap;"><div><div style="font-size:20px;font-weight:700;color:var(--accent);">${scriptsSnap.size}</div><div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;">Scripts</div></div><div><div style="font-size:20px;font-weight:700;color:var(--accent);">${(ud?.friends||[]).length}</div><div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;">Friends</div></div><div><div style="font-size:20px;font-weight:700;color:var(--accent);">${followers.length}</div><div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;">Followers</div></div><div><div style="font-size:20px;font-weight:700;color:var(--accent);">${following.length}</div><div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;">Following</div></div></div>`;
   const actRow=document.createElement("div"); actRow.style.cssText="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;";
   if(!isMe){
-    // Follow / Unfollow
-    const followBtn=document.createElement("button");
-    followBtn.className="followBtn"+(isFollowingThem?" following":"");
-    followBtn.textContent=isFollowingThem?"✓ Following":"+ Follow";
-    let currentlyFollowing=isFollowingThem;
-    followBtn.addEventListener("click",async()=>{
-      if(currentlyFollowing){
-        await unfollowUser(username);
-        currentlyFollowing=false;
-        followBtn.className="followBtn"; followBtn.textContent="+ Follow";
-        const fc=document.getElementById("modalFollowerCount"); if(fc) fc.textContent=Math.max(0,parseInt(fc.textContent)-1);
-      } else {
-        await followUser(username);
-        currentlyFollowing=true;
-        followBtn.className="followBtn following"; followBtn.textContent="✓ Following";
-        const fc=document.getElementById("modalFollowerCount"); if(fc) fc.textContent=parseInt(fc.textContent)+1;
-      }
+    // Follow button
+    const fb=document.createElement("button");
+    fb.className="followBtn"+(isFollowing?" following":"");
+    fb.textContent=isFollowing?"✓ Following":"+ Follow";
+    fb.addEventListener("click",async()=>{
+      await toggleFollow(username);
+      // Refresh modal
+      el("profileOverlay").classList.remove("open");
+      setTimeout(()=>openUserProfile(username),300);
     });
-    actRow.appendChild(followBtn);
+    actRow.appendChild(fb);
 
     if(isFriend){
       const mb=document.createElement("button"); mb.textContent="💬 Message"; mb.style.cssText="margin:0;padding:10px 18px;font-size:13px;";
@@ -1098,126 +1178,13 @@ async function openUserProfile(username){
 el("profileCloseBtn").addEventListener("click",()=>el("profileOverlay").classList.remove("open"));
 el("profileOverlay").addEventListener("click",e=>{ if(e.target===el("profileOverlay")) el("profileOverlay").classList.remove("open"); });
 
-// ─── SCRIPT PREVIEW + COMMENTS ────────────────────────────────
-el("previewCloseBtn").addEventListener("click",()=>el("previewOverlay").classList.remove("open"));
-el("previewOverlay").addEventListener("click",e=>{ if(e.target===el("previewOverlay")) el("previewOverlay").classList.remove("open"); });
-
-let commentUnsub = null;
-
-async function openScriptPreview(s){
-  const me = localStorage.getItem("username")||"";
-  const likes = s.likes||[], liked = likes.includes(me);
-
-  el("previewModalTitle").textContent = s.name;
-  const content = el("previewModalContent");
-  content.innerHTML = "";
-
-  const info = document.createElement("div"); info.className="previewInfo";
-  const pfpEl = mkAv(s.ownerPfp||"", 20, 12);
-  pfpEl.style.cssText = "width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:12px;border:none;background:transparent;vertical-align:middle;";
-  info.innerHTML = `<div class="previewName">${s.name}</div><div class="previewId">require(${s.id})</div>`;
-  const meta = document.createElement("div"); meta.className="previewMeta";
-  meta.appendChild(pfpEl);
-  meta.appendChild(Object.assign(document.createElement("span"),{textContent:" "+(s.owner||"unknown"), style:"font-size:13px;color:var(--text-muted);cursor:pointer;"}));
-  meta.lastElementChild.addEventListener("click",()=>{ el("previewOverlay").classList.remove("open"); openUserProfile(s.owner); });
-  info.appendChild(meta);
-  content.appendChild(info);
-
-  const actions = document.createElement("div"); actions.className="previewActions";
-  const copyBtn = document.createElement("button"); copyBtn.textContent="📋 Copy require()"; copyBtn.style.margin="0";
-  copyBtn.addEventListener("click",()=>{ navigator.clipboard.writeText("require("+s.id+")"); copyBtn.textContent="✅ Copied!"; setTimeout(()=>copyBtn.textContent="📋 Copy require()",1500); });
-  const likeBtn = document.createElement("button");
-  likeBtn.className = liked ? "likeBtn liked" : "likeBtn";
-  likeBtn.textContent = (liked?"❤️":"🤍")+" "+likes.length+" like"+(likes.length!==1?"s":"");
-  likeBtn.style.margin="0";
-  likeBtn.addEventListener("click",async()=>{
-    const ref = doc(db,"scripts",s.docId);
-    liked ? await updateDoc(ref,{likes:arrayRemove(me)}) : await updateDoc(ref,{likes:arrayUnion(me)});
-    const updated = (await getDoc(ref)).data();
-    const newLikes = updated.likes||[];
-    const nowLiked = newLikes.includes(me);
-    likeBtn.className = nowLiked ? "likeBtn liked" : "likeBtn";
-    likeBtn.textContent = (nowLiked?"❤️":"🤍")+" "+newLikes.length+" like"+(newLikes.length!==1?"s":"");
-  });
-  if(s.owner===me){
-    const delBtn = document.createElement("button"); delBtn.className="btnDanger"; delBtn.textContent="Delete"; delBtn.style.margin="0";
-    delBtn.addEventListener("click",async()=>{ await deleteDoc(doc(db,"scripts",s.docId)); el("previewOverlay").classList.remove("open"); });
-    actions.appendChild(delBtn);
-  }
-  actions.appendChild(copyBtn); actions.appendChild(likeBtn);
-  content.appendChild(actions);
-
-  const sec = document.createElement("div"); sec.className="commentsSection";
-  const head = document.createElement("div"); head.className="commentsHead";
-  head.innerHTML = `💬 Comments <span class="commentCount" id="commentCount"></span>`;
-  sec.appendChild(head);
-
-  const list = document.createElement("div"); list.className="commentsList"; list.id="commentsList";
-  sec.appendChild(list);
-
-  const addRow = document.createElement("div"); addRow.className="addCommentRow";
-  const inp = document.createElement("input"); inp.type="text"; inp.placeholder="Write a comment…"; inp.style.marginTop="0";
-  const postBtn = document.createElement("button"); postBtn.textContent="Post"; postBtn.style.cssText="margin-top:0;padding:12px 18px;";
-  addRow.appendChild(inp); addRow.appendChild(postBtn);
-  sec.appendChild(addRow);
-  content.appendChild(sec);
-
-  async function postComment(){
-    const text = inp.value.trim(); if(!text) return;
-    inp.value="";
-    try {
-      await addDoc(collection(db,"scripts",s.docId,"comments"),{
-        text, user:me, pfp:localStorage.getItem("pfp")||"", createdAt:serverTimestamp()
-      });
-    } catch(e){ console.error("Comment error:",e); inp.value=text; }
-    inp.disabled=false; postBtn.disabled=false; inp.focus();
-  }
-  postBtn.addEventListener("click",postComment);
-  inp.addEventListener("keydown",e=>{ if(e.key==="Enter") postComment(); });
-
-  if(commentUnsub) commentUnsub();
-  commentUnsub = onSnapshot(
-    query(collection(db,"scripts",s.docId,"comments"), orderBy("createdAt","asc")),
-    snap=>{
-      list.innerHTML="";
-      const countEl = document.getElementById("commentCount");
-      if(countEl) countEl.textContent = "("+snap.size+")";
-      if(snap.empty){ list.innerHTML=`<div style="color:var(--text-dim);font-size:13px;padding:8px 0;">No comments yet — be the first!</div>`; return; }
-      snap.forEach(d=>{
-        const c = d.data();
-        const time = c.createdAt?.toDate ? c.createdAt.toDate().toLocaleDateString([],{month:"short",day:"numeric"}) : "";
-        const item = document.createElement("div"); item.className="commentItem";
-        const headDiv = document.createElement("div"); headDiv.className="commentHead";
-        const av = document.createElement("div"); av.className="commentAv";
-        if(c.pfp && c.pfp.startsWith("data:")){ const img=document.createElement("img"); img.src=c.pfp; av.appendChild(img); }
-        else av.textContent = c.pfp||"?";
-        const user = Object.assign(document.createElement("span"),{className:"commentUser",textContent:c.user});
-        const ts = Object.assign(document.createElement("span"),{className:"commentTime",textContent:time});
-        headDiv.appendChild(av); headDiv.appendChild(user); headDiv.appendChild(ts);
-        if(c.user===me){
-          const delC = document.createElement("button"); delC.className="commentDeleteBtn"; delC.textContent="✕";
-          delC.addEventListener("click",async()=>await deleteDoc(doc(db,"scripts",s.docId,"comments",d.id)));
-          headDiv.appendChild(delC);
-        }
-        const txt = Object.assign(document.createElement("div"),{className:"commentText",textContent:c.text});
-        item.appendChild(headDiv); item.appendChild(txt);
-        list.appendChild(item);
-      });
-      list.scrollTop = list.scrollHeight;
-    }
-  );
-
-  el("previewOverlay").classList.add("open");
-}
-
 // ─── MY PROFILE ──────────────────────────────────────────────
 async function renderMyProfile(){
   const me=localStorage.getItem("username"), ud=await getUserDoc(me);
   const pfp=ud?.pfp||localStorage.getItem("pfp")||"", bio=ud?.bio||localStorage.getItem("bio")||"";
   localStorage.setItem("pfp",pfp); localStorage.setItem("bio",bio);
   const scriptsSnap=await getDocs(query(collection(db,"scripts"),where("owner","==",me)));
-  const followers=(ud?.followers||[]).length;
-  const following=(ud?.following||[]).length;
+  const followers=ud?.followers||[], following=ud?.following||[];
   const page=el("myProfilePage"); page.innerHTML="";
   const header=document.createElement("div"); header.className="profileHeader";
   const banner=document.createElement("div"); banner.style.cssText="position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(135deg,rgba(0,168,255,0.15),rgba(123,95,255,0.15));z-index:0;";
@@ -1226,15 +1193,7 @@ async function renderMyProfile(){
   const avDiv=document.createElement("div"); avDiv.className="profileAvatar";
   if(pfp.startsWith("data:")){ const img=document.createElement("img"); img.src=pfp; avDiv.appendChild(img); } else avDiv.textContent=pfp||"?";
   const info=document.createElement("div"); info.className="profileInfo";
-  info.innerHTML=`
-    <div class="profileName">${me}</div>
-    <div class="profileBio">${bio||"No bio set."}</div>
-    <div class="profileStats">
-      <div class="profileStat"><div class="num">${scriptsSnap.size}</div><div class="lbl">Scripts</div></div>
-      <div class="profileStat"><div class="num">${(ud?.friends||[]).length}</div><div class="lbl">Friends</div></div>
-      <div class="profileStat"><div class="num">${followers}</div><div class="lbl">Followers</div></div>
-      <div class="profileStat"><div class="num">${following}</div><div class="lbl">Following</div></div>
-    </div>`;
+  info.innerHTML=`<div class="profileName">${me}</div><div class="profileBio">${bio||"No bio set."}</div><div class="profileStats"><div class="profileStat"><div class="num">${scriptsSnap.size}</div><div class="lbl">Scripts</div></div><div class="profileStat"><div class="num">${(ud?.friends||[]).length}</div><div class="lbl">Friends</div></div><div class="profileStat"><div class="num">${followers.length}</div><div class="lbl">Followers</div></div><div class="profileStat"><div class="num">${following.length}</div><div class="lbl">Following</div></div></div>`;
   row.appendChild(avDiv); row.appendChild(info); header.appendChild(row);
   const actRow=document.createElement("div"); actRow.className="profileActions";
   const editBtn=document.createElement("button"); editBtn.textContent="✏️ Edit Profile"; editBtn.style.margin="0"; editBtn.addEventListener("click",openSettings); actRow.appendChild(editBtn);
@@ -1245,10 +1204,10 @@ async function renderMyProfile(){
   scriptsSnap.forEach(d=>{
     const s={docId:d.id,...d.data()}, likes=s.likes||[];
     const card=document.createElement("div"); card.className="card";
-    card.innerHTML=`<div class="cardTitle">${s.name}</div><div class="requireText">require(${s.id})</div><div style="color:var(--text-muted);font-size:13px;">❤️ ${likes.length} like${likes.length!==1?"s":""}</div>`;
+    card.innerHTML=`<div class="cardTitle">${s.name}</div><div class="requireText">${s.id}</div><div style="color:var(--text-muted);font-size:13px;">❤️ ${likes.length} like${likes.length!==1?"s":""}</div>`;
     const btns=document.createElement("div"); btns.className="rowBtns"; btns.style.marginTop="12px";
     const cp=document.createElement("button"); cp.textContent="📋 Copy";
-    cp.addEventListener("click",()=>{ navigator.clipboard.writeText(`require(${s.id})`); cp.textContent="✅ Copied!"; setTimeout(()=>cp.textContent="📋 Copy",1500); });
+    cp.addEventListener("click",()=>{ navigator.clipboard.writeText(s.id); cp.textContent="✅ Copied!"; setTimeout(()=>cp.textContent="📋 Copy",1500); });
     const del=document.createElement("button"); del.className="btnDanger"; del.textContent="Delete"; del.style.margin="0";
     del.addEventListener("click",async()=>{ await deleteDoc(doc(db,"scripts",s.docId)); renderMyProfile(); });
     btns.appendChild(cp); btns.appendChild(del); card.appendChild(btns); grid.appendChild(card);
