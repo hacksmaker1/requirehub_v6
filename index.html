@@ -24,6 +24,8 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
 @keyframes meshMove{0%{transform:scale(1);}100%{transform:scale(1.05) translate(1%,1%);}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 @keyframes msgIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+@keyframes spin{to{transform:rotate(360deg);}}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.5;}}
 
 .sidebar{position:fixed;left:0;top:0;width:240px;height:100vh;background:#080a10;border-right:1px solid var(--border);padding:28px 16px;display:none;z-index:10;overflow-y:auto;}
 .logo{font-size:22px;font-weight:700;background:var(--accent-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:32px;padding:0 10px;display:block;}
@@ -31,15 +33,6 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
 .navBtn:hover{color:var(--text);border-color:var(--border);background:rgba(255,255,255,0.04);transform:translateX(3px);}
 .navBtn.active{color:var(--accent);border-color:var(--border-glow);background:rgba(0,168,255,0.08);}
 .navBadge{background:var(--danger);color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:20px;margin-left:auto;min-width:18px;text-align:center;}
-
-.dmNavList{margin-top:8px;border-top:1px solid var(--border);padding-top:8px;}
-.dmNavItem{display:flex;align-items:center;gap:8px;padding:9px 10px;border-radius:var(--radius-sm);cursor:pointer;transition:background 0.15s;position:relative;}
-.dmNavItem:hover{background:rgba(255,255,255,0.04);}
-.dmNavItem.active{background:rgba(0,168,255,0.08);}
-.dmNavAvatar{width:28px;height:28px;border-radius:50%;flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:15px;background:rgba(0,168,255,0.1);border:1px solid rgba(0,168,255,0.2);}
-.dmNavAvatar img{width:100%;height:100%;object-fit:cover;}
-.dmNavName{font-size:13px;font-weight:500;color:var(--text-muted);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.dmNavUnread{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;}
 
 .main{margin-left:0;padding:30px;position:relative;z-index:1;}
 .panel{display:none;margin-left:240px;padding:30px;position:relative;z-index:1;}
@@ -71,6 +64,50 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
 .profileBtn{width:42px;height:42px;border-radius:50%;background:var(--accent-grad);border:2px solid rgba(0,168,255,0.3);color:white;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;margin-top:0;box-shadow:0 0 20px rgba(0,168,255,0.3);transition:all 0.22s var(--ease);font-family:'Space Grotesk',sans-serif;overflow:hidden;padding:0;}
 .profileBtn:hover{transform:scale(1.1);box-shadow:0 0 32px rgba(0,168,255,0.5);}
 .profileBtn img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+
+/* ASK AI BUTTON */
+.askAiBtn{background:linear-gradient(135deg,#7b5fff,#00a8ff);border:none;color:white;padding:10px 18px;border-radius:var(--radius-sm);margin-top:0;cursor:pointer;font-weight:700;font-family:'Space Grotesk',sans-serif;font-size:13px;transition:all 0.22s var(--ease);display:flex;align-items:center;gap:6px;white-space:nowrap;box-shadow:0 0 16px rgba(123,95,255,0.3);}
+.askAiBtn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(123,95,255,0.45);}
+.askAiBtn:active{transform:translateY(0);}
+
+/* AI MODAL */
+.aiModal{width:560px;max-width:96vw;}
+.aiChatArea{background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:var(--radius-md);padding:16px;height:340px;overflow-y:auto;display:flex;flex-direction:column;gap:12px;margin-bottom:12px;}
+.aiMsg{max-width:85%;padding:12px 16px;border-radius:14px;font-size:14px;line-height:1.6;animation:msgIn 0.2s var(--ease) both;}
+.aiMsg.user{background:var(--accent-grad);align-self:flex-end;border-bottom-right-radius:3px;}
+.aiMsg.assistant{background:rgba(255,255,255,0.05);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:3px;white-space:pre-wrap;}
+.aiMsg.thinking{background:rgba(123,95,255,0.08);border:1px solid rgba(123,95,255,0.2);align-self:flex-start;color:var(--text-muted);font-size:13px;display:flex;align-items:center;gap:8px;}
+.aiThinkDots{display:flex;gap:4px;}
+.aiThinkDots span{width:6px;height:6px;border-radius:50%;background:var(--accent2);animation:pulse 1.2s ease-in-out infinite;}
+.aiThinkDots span:nth-child(2){animation-delay:0.2s;}
+.aiThinkDots span:nth-child(3){animation-delay:0.4s;}
+.aiInputRow{display:flex;gap:8px;}
+.aiInputRow input{margin-top:0;flex:1;}
+.aiInputRow button{margin-top:0;padding:12px 20px;white-space:nowrap;}
+.aiWelcome{text-align:center;color:var(--text-muted);font-size:13px;padding:20px;display:flex;flex-direction:column;align-items:center;gap:8px;}
+.aiWelcome .aiIcon{font-size:40px;margin-bottom:4px;}
+.aiWelcome strong{color:var(--text);font-size:15px;}
+
+/* GIF PICKER */
+.gifBtn{background:rgba(255,255,255,0.06)!important;border:1px solid var(--border)!important;color:var(--text-muted)!important;padding:10px 14px!important;border-radius:var(--radius-sm)!important;margin-top:0!important;font-size:16px!important;cursor:pointer!important;transition:all 0.18s var(--ease)!important;white-space:nowrap!important;}
+.gifBtn:hover{background:rgba(0,168,255,0.1)!important;border-color:var(--border-glow)!important;color:var(--accent)!important;transform:translateY(-1px)!important;box-shadow:none!important;}
+.gifPickerOverlay{display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;}
+.gifPickerOverlay.open{display:flex;}
+.gifPicker{background:var(--bg-card);border:1px solid rgba(0,168,255,0.2);border-radius:var(--radius-lg);padding:20px;width:480px;max-width:96vw;max-height:90vh;display:flex;flex-direction:column;gap:12px;box-shadow:0 40px 100px rgba(0,0,0,0.95);animation:fadeUp 0.3s var(--ease) both;}
+.gifPickerHead{display:flex;justify-content:space-between;align-items:center;}
+.gifPickerHead span{font-size:15px;font-weight:700;}
+.gifSearchRow{display:flex;gap:8px;}
+.gifSearchRow input{margin-top:0;flex:1;}
+.gifSearchRow button{margin-top:0;padding:12px 18px;}
+.gifGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;overflow-y:auto;max-height:320px;}
+.gifItem{border-radius:10px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:all 0.18s var(--ease);aspect-ratio:1;}
+.gifItem:hover{border-color:var(--accent);transform:scale(1.03);}
+.gifItem img{width:100%;height:100%;object-fit:cover;display:block;}
+.gifEmpty{color:var(--text-muted);text-align:center;padding:20px;font-size:13px;grid-column:1/-1;}
+
+/* CHAT GIF display */
+.chatGif{max-width:200px;border-radius:10px;margin-top:4px;display:block;}
+.dmGif{max-width:200px;border-radius:10px;margin-top:4px;display:block;}
 
 .tabContent{display:none;}
 .tabContent.active{display:block;animation:fadeUp 0.3s var(--ease) both;}
@@ -123,7 +160,7 @@ button:active{transform:translateY(0);}
 .chatMsgAv img{width:100%;height:100%;object-fit:cover;}
 .msgUser{font-size:11px;opacity:.7;font-weight:600;}
 .msgTime{font-size:10px;opacity:.4;margin-top:4px;text-align:right;}
-.chatInputRow{display:flex;gap:10px;padding:14px 16px;border-top:1px solid var(--border);background:rgba(0,0,0,0.2);}
+.chatInputRow{display:flex;gap:8px;padding:14px 16px;border-top:1px solid var(--border);background:rgba(0,0,0,0.2);align-items:center;}
 .chatInputRow input{margin-top:0;flex:1;}
 .chatInputRow button{margin-top:0;padding:12px 22px;white-space:nowrap;}
 
@@ -137,7 +174,6 @@ button:active{transform:translateY(0);}
 .dmConvoAv{width:36px;height:36px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:18px;background:rgba(0,168,255,0.1);border:1px solid rgba(0,168,255,0.2);flex-shrink:0;}
 .dmConvoAv img{width:100%;height:100%;object-fit:cover;}
 .dmConvoName{font-size:13px;font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.dmConvoUnread{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;}
 .dmMain{flex:1;display:flex;flex-direction:column;min-width:0;}
 .dmHeader{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;background:rgba(0,0,0,0.15);}
 .dmHeaderAv{width:34px;height:34px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:18px;background:rgba(0,168,255,0.1);flex-shrink:0;}
@@ -148,7 +184,7 @@ button:active{transform:translateY(0);}
 .dmMsg.mine{background:var(--accent-grad);align-self:flex-end;border-bottom-right-radius:3px;box-shadow:0 3px 12px rgba(0,168,255,0.25);}
 .dmMsg.theirs{background:rgba(255,255,255,0.05);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:3px;}
 .dmMsgTime{font-size:10px;opacity:.4;margin-top:3px;text-align:right;}
-.dmInputRow{display:flex;gap:10px;padding:12px 14px;border-top:1px solid var(--border);background:rgba(0,0,0,0.2);}
+.dmInputRow{display:flex;gap:8px;padding:12px 14px;border-top:1px solid var(--border);background:rgba(0,0,0,0.2);align-items:center;}
 .dmInputRow input{margin-top:0;flex:1;}
 .dmInputRow button{margin-top:0;padding:10px 18px;white-space:nowrap;font-size:13px;}
 .dmEmpty{flex:1;display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-size:14px;flex-direction:column;gap:10px;}
@@ -218,7 +254,6 @@ button:active{transform:translateY(0);}
 .subTab.active{color:var(--accent);border-color:var(--border-glow);background:rgba(0,168,255,0.08);}
 .subTabContent{display:none;}
 .subTabContent.active{display:block;animation:fadeUp 0.25s var(--ease) both;}
-
 .sectionHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
 .sectionHead h2{font-size:17px;font-weight:700;}
 .status{margin-top:12px;color:#f87171;text-align:center;font-size:13px;font-weight:500;}
@@ -285,6 +320,7 @@ button:active{transform:translateY(0);}
   <div class="topbar">
     <div class="welcome" id="welcomeMsg">Welcome back</div>
     <div class="topbarRight">
+      <button class="askAiBtn" id="askAiTopBtn">✨ Ask AI</button>
       <input class="searchBox" type="text" id="searchBar" placeholder="Search scripts…">
       <button class="profileBtn" id="profileBtn"></button>
     </div>
@@ -307,6 +343,7 @@ button:active{transform:translateY(0);}
     <div class="chatBox">
       <div class="chatMessages" id="chatMessages"><div class="emptyMsg">No messages yet. Say hi! 👋</div></div>
       <div class="chatInputRow">
+        <button class="gifBtn" id="globalGifBtn" title="Send GIF">GIF</button>
         <input type="text" id="chatInput" placeholder="Type a message…">
         <button id="sendBtn">Send</button>
       </div>
@@ -408,6 +445,47 @@ button:active{transform:translateY(0);}
   </div>
 </div>
 
+<!-- ASK AI MODAL -->
+<div class="overlay" id="aiOverlay">
+  <div class="modal aiModal">
+    <div class="modalHead">
+      <span>✨ Ask AI</span>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button id="aiClearBtn" style="background:rgba(255,255,255,0.06);border:1px solid var(--border);color:var(--text-muted);padding:6px 12px;border-radius:8px;font-size:12px;margin:0;cursor:pointer;">Clear</button>
+        <button class="closeBtn" id="aiCloseBtn">✕</button>
+      </div>
+    </div>
+    <div class="aiChatArea" id="aiChatArea">
+      <div class="aiWelcome" id="aiWelcome">
+        <div class="aiIcon">🤖</div>
+        <strong>Hi! I'm your AI assistant</strong>
+        <span>Ask me anything — scripting help, coding questions, ideas, or just chat!</span>
+      </div>
+    </div>
+    <div class="aiInputRow">
+      <input type="text" id="aiInput" placeholder="Ask me anything…">
+      <button id="aiSendBtn">Ask</button>
+    </div>
+  </div>
+</div>
+
+<!-- GIF PICKER -->
+<div class="gifPickerOverlay" id="gifPickerOverlay">
+  <div class="gifPicker">
+    <div class="gifPickerHead">
+      <span>🎞️ Send a GIF</span>
+      <button class="closeBtn" id="gifCloseBtn">✕</button>
+    </div>
+    <div class="gifSearchRow">
+      <input type="text" id="gifSearchInput" placeholder="Search GIFs… (e.g. 'funny cat')">
+      <button id="gifSearchBtn">Search</button>
+    </div>
+    <div class="gifGrid" id="gifGrid">
+      <div class="gifEmpty">Search for a GIF above to get started 🎉</div>
+    </div>
+  </div>
+</div>
+
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import {
@@ -429,6 +507,8 @@ const db  = getFirestore(app);
 
 const STATIC_INVITE = "FreeInvite9116X88";
 const AVATARS = ["🐱","🐶","🦊","🐺","🐻","🐼","🐸","🐵","🦁","🐯","🐨","🦝","🐙","🦋","🐲","🦄","🤖","👾","🧙","🧛","🥷","👻","🎭","⚡","🔥","🌊","🍀","🌸","💎","🚀"];
+// Tenor API key — free public key for demos
+const TENOR_KEY = "AIzaSyDlFrankg4WWLeoo3FIeQxJ7QSbTXCEVaA";
 
 const el = id => document.getElementById(id);
 function setStatus(t){ el("status").textContent = t; }
@@ -438,33 +518,24 @@ function mkAv(pfp, size=40, fsize=20){
   wrap.style.cssText = `width:${size}px;height:${size}px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:${fsize}px;flex-shrink:0;background:rgba(0,168,255,0.1);border:2px solid rgba(0,168,255,0.2);`;
   if(pfp && pfp.startsWith("data:")){
     const img = document.createElement("img");
-    img.src = pfp;
-    img.style.cssText = "width:100%;height:100%;object-fit:cover;";
+    img.src = pfp; img.style.cssText = "width:100%;height:100%;object-fit:cover;";
     wrap.appendChild(img);
-  } else {
-    wrap.textContent = pfp || "?";
-  }
+  } else { wrap.textContent = pfp || "?"; }
   return wrap;
 }
 
 function applyProfileBtn(pfp){
-  const btn = el("profileBtn");
-  btn.innerHTML = "";
+  const btn = el("profileBtn"); btn.innerHTML = "";
   if(pfp && pfp.startsWith("data:")){
     btn.style.background = "transparent";
-    const img = document.createElement("img");
-    img.src = pfp;
+    const img = document.createElement("img"); img.src = pfp;
     Object.assign(img.style,{width:"100%",height:"100%",objectFit:"cover",borderRadius:"50%"});
     btn.appendChild(img);
   } else if(pfp){
-    btn.textContent = pfp;
-    btn.style.fontSize = "22px";
-    btn.style.background = "rgba(0,168,255,0.15)";
+    btn.textContent = pfp; btn.style.fontSize = "22px"; btn.style.background = "rgba(0,168,255,0.15)";
   } else {
     const u = localStorage.getItem("username") || "?";
-    btn.textContent = u.charAt(0).toUpperCase();
-    btn.style.fontSize = "16px";
-    btn.style.background = "";
+    btn.textContent = u.charAt(0).toUpperCase(); btn.style.fontSize = "16px"; btn.style.background = "";
   }
 }
 
@@ -483,6 +554,125 @@ async function getInviteKey(){
     return STATIC_INVITE;
   } catch { return STATIC_INVITE; }
 }
+
+// ─── ASK AI ──────────────────────────────────────────────────
+let aiHistory = [];
+
+el("askAiTopBtn").addEventListener("click",()=>{ el("aiOverlay").classList.add("open"); setTimeout(()=>el("aiInput").focus(),100); });
+el("aiCloseBtn").addEventListener("click",()=>el("aiOverlay").classList.remove("open"));
+el("aiOverlay").addEventListener("click",e=>{ if(e.target===el("aiOverlay")) el("aiOverlay").classList.remove("open"); });
+el("aiClearBtn").addEventListener("click",()=>{ aiHistory=[]; el("aiChatArea").innerHTML=`<div class="aiWelcome" id="aiWelcome"><div class="aiIcon">🤖</div><strong>Hi! I'm your AI assistant</strong><span>Ask me anything — scripting help, coding questions, ideas, or just chat!</span></div>`; });
+el("aiInput").addEventListener("keydown",e=>{ if(e.key==="Enter") sendAiMessage(); });
+el("aiSendBtn").addEventListener("click",sendAiMessage);
+
+function appendAiMsg(role, text){
+  const welcome = el("aiWelcome"); if(welcome) welcome.remove();
+  const area = el("aiChatArea");
+  const div = document.createElement("div");
+  div.className = "aiMsg " + role;
+  div.textContent = text;
+  area.appendChild(div);
+  area.scrollTop = area.scrollHeight;
+  return div;
+}
+
+async function sendAiMessage(){
+  const input = el("aiInput"); const text = input.value.trim(); if(!text) return;
+  input.value = ""; input.disabled = true; el("aiSendBtn").disabled = true;
+
+  appendAiMsg("user", text);
+  aiHistory.push({ role:"user", content: text });
+
+  // Thinking indicator
+  const thinkDiv = document.createElement("div");
+  thinkDiv.className = "aiMsg thinking";
+  thinkDiv.innerHTML = `<div class="aiThinkDots"><span></span><span></span><span></span></div><span>Thinking…</span>`;
+  el("aiChatArea").appendChild(thinkDiv);
+  el("aiChatArea").scrollTop = el("aiChatArea").scrollHeight;
+
+  try {
+    const res = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-20250514",
+        max_tokens: 1000,
+        system: "You are a helpful AI assistant built into RequireHub, a platform for sharing Roblox/Lua require scripts. You help users with scripting questions, coding help, and general questions. Be friendly, concise, and helpful.",
+        messages: aiHistory
+      })
+    });
+    const data = await res.json();
+    thinkDiv.remove();
+    const reply = data.content?.[0]?.text || "Sorry, I couldn't get a response.";
+    aiHistory.push({ role:"assistant", content: reply });
+    appendAiMsg("assistant", reply);
+  } catch(err) {
+    thinkDiv.remove();
+    appendAiMsg("assistant", "⚠️ Error connecting to AI. Please try again.");
+  }
+
+  input.disabled = false; el("aiSendBtn").disabled = false; input.focus();
+}
+
+// ─── GIF PICKER ──────────────────────────────────────────────
+let gifCallback = null; // function to call with chosen gif URL
+
+function openGifPicker(onSelect){
+  gifCallback = onSelect;
+  el("gifPickerOverlay").classList.add("open");
+  el("gifSearchInput").value = "";
+  el("gifGrid").innerHTML = `<div class="gifEmpty">Search for a GIF above to get started 🎉</div>`;
+  setTimeout(()=>el("gifSearchInput").focus(),100);
+  // Load trending by default
+  loadGifs("trending");
+}
+
+el("gifCloseBtn").addEventListener("click",()=>el("gifPickerOverlay").classList.remove("open"));
+el("gifPickerOverlay").addEventListener("click",e=>{ if(e.target===el("gifPickerOverlay")) el("gifPickerOverlay").classList.remove("open"); });
+el("gifSearchBtn").addEventListener("click",()=>{ const q=el("gifSearchInput").value.trim(); loadGifs(q||"trending"); });
+el("gifSearchInput").addEventListener("keydown",e=>{ if(e.key==="Enter"){ const q=el("gifSearchInput").value.trim(); loadGifs(q||"trending"); } });
+
+async function loadGifs(query){
+  const grid = el("gifGrid");
+  grid.innerHTML = `<div class="gifEmpty" style="animation:pulse 1s infinite;">Loading GIFs…</div>`;
+  try {
+    const isTrending = query === "trending";
+    const url = isTrending
+      ? `https://tenor.googleapis.com/v2/featured?key=${TENOR_KEY}&limit=18&media_filter=gif`
+      : `https://tenor.googleapis.com/v2/search?q=${encodeURIComponent(query)}&key=${TENOR_KEY}&limit=18&media_filter=gif`;
+    const res = await fetch(url);
+    const data = await res.json();
+    grid.innerHTML = "";
+    if(!data.results?.length){ grid.innerHTML=`<div class="gifEmpty">No GIFs found. Try a different search!</div>`; return; }
+    data.results.forEach(r=>{
+      const gifUrl = r.media_formats?.gif?.url || r.media_formats?.tinygif?.url;
+      if(!gifUrl) return;
+      const item = document.createElement("div"); item.className = "gifItem";
+      const img = document.createElement("img"); img.src = gifUrl; img.alt = r.content_description || "GIF";
+      img.loading = "lazy";
+      item.appendChild(img);
+      item.addEventListener("click",()=>{
+        el("gifPickerOverlay").classList.remove("open");
+        if(gifCallback) gifCallback(gifUrl);
+      });
+      grid.appendChild(item);
+    });
+  } catch(e) {
+    grid.innerHTML = `<div class="gifEmpty">⚠️ Could not load GIFs. Check your connection.</div>`;
+  }
+}
+
+// GIF button for global chat
+el("globalGifBtn").addEventListener("click",()=>{
+  openGifPicker(async (gifUrl)=>{
+    const me = localStorage.getItem("username")||"unknown";
+    await addDoc(collection(db,"messages"),{
+      text:"", gif:gifUrl,
+      user:me, pfp:localStorage.getItem("pfp")||"",
+      createdAt:serverTimestamp()
+    });
+  });
+});
 
 // ─── SIGNUP PFP PICKER ──────────────────────────────────────
 let signupPfp = AVATARS[0], signupImgData = null;
@@ -506,7 +696,7 @@ el("pfpFileInput").addEventListener("change",e=>{
   const r=new FileReader(); r.onload=ev=>{ signupImgData=ev.target.result; el("pfpPreviewImg").src=signupImgData; el("pfpPreviewImg").style.display="block"; }; r.readAsDataURL(file);
 });
 
-// ─── LOGIN/SIGNUP TOGGLE ─────────────────────────────────────
+// ─── LOGIN/SIGNUP ────────────────────────────────────────────
 let isLogin = false;
 function setMode(login){
   isLogin=login;
@@ -519,7 +709,6 @@ function setMode(login){
 }
 el("switchLink").addEventListener("click",e=>{ e.preventDefault(); setMode(!isLogin); });
 
-// ─── AUTH ────────────────────────────────────────────────────
 el("signInBtn").addEventListener("click",async()=>{
   const user=el("username").value.trim(), pass=el("password").value.trim();
   if(!user||!pass){ setStatus("Fill all fields"); return; }
@@ -636,8 +825,7 @@ function renderScripts(){
         <span class="likeCount">${likes.length} like${likes.length!==1?"s":""}</span>
       </div>`;
     const badge=div.querySelector(".ownerBadge");
-    badge.appendChild(avEl);
-    badge.appendChild(document.createTextNode(" "+( s.owner||"unknown")));
+    badge.appendChild(avEl); badge.appendChild(document.createTextNode(" "+(s.owner||"unknown")));
     badge.addEventListener("click",()=>openUserProfile(s.owner));
     div.querySelector(".copyBtn").addEventListener("click",()=>{ navigator.clipboard.writeText(`require(${s.id})`); div.querySelector(".copyBtn").textContent="✅ Copied!"; setTimeout(()=>div.querySelector(".copyBtn").textContent="📋 Copy",1500); });
     div.querySelector(".likeBtn").addEventListener("click",async()=>{ const ref=doc(db,"scripts",s.docId); liked?await updateDoc(ref,{likes:arrayRemove(me)}):await updateDoc(ref,{likes:arrayUnion(me)}); });
@@ -664,7 +852,12 @@ function startGlobalChat(){
         const name=document.createElement("span"); name.className="msgUser"; name.textContent=m.user;
         head.appendChild(av); head.appendChild(name); div.appendChild(head);
       }
-      const txt=document.createTextNode(m.text); div.appendChild(txt);
+      if(m.gif){
+        const img=document.createElement("img"); img.src=m.gif; img.className="chatGif"; img.alt="GIF";
+        div.appendChild(img);
+      } else {
+        div.appendChild(document.createTextNode(m.text));
+      }
       const ts=document.createElement("div"); ts.className="msgTime"; ts.textContent=time; div.appendChild(ts);
       box.appendChild(div);
     });
@@ -680,20 +873,17 @@ el("chatInput").addEventListener("keydown",e=>{ if(e.key==="Enter") sendGlobalMs
 
 // ─── PRIVATE DMs ─────────────────────────────────────────────
 function dmRoomId(a,b){ return [a,b].sort().join("__DM__"); }
-
-let activeDM = null;
-let dmUnsubscribe = null;
+let activeDM = null, dmUnsubscribe = null;
 
 async function renderDMSidebar(){
   const me=localStorage.getItem("username"); if(!me) return;
-  const ud=await getUserDoc(me);
-  const friends=ud?.friends||[];
+  const ud=await getUserDoc(me); const friends=ud?.friends||[];
   const list=el("dmConvoList"); list.innerHTML="";
   if(!friends.length){ list.innerHTML=`<div class="dmNoFriends">Add friends to start chatting!</div>`; return; }
   for(const f of friends){
     const fu=await getUserDoc(f); if(!fu) continue;
     const item=document.createElement("div"); item.className="dmConvoItem"+(activeDM===f?" active":"");
-    const av=mkAv(fu.pfp,36,18); av.className="dmConvoAv"; av.style.cssText="width:36px;height:36px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:18px;background:rgba(0,168,255,0.1);border:1px solid rgba(0,168,255,0.2);flex-shrink:0;";
+    const av=mkAv(fu.pfp,36,18); av.style.cssText="width:36px;height:36px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:18px;background:rgba(0,168,255,0.1);border:1px solid rgba(0,168,255,0.2);flex-shrink:0;";
     const name=document.createElement("div"); name.className="dmConvoName"; name.textContent=fu.username;
     item.appendChild(av); item.appendChild(name);
     item.addEventListener("click",()=>openDM(f,fu));
@@ -709,27 +899,33 @@ async function openDM(friendUsername, friendData){
   const main=el("dmMain"); main.innerHTML="";
 
   const header=document.createElement("div"); header.className="dmHeader";
-  const hAv=mkAv(friendData.pfp,34,18); hAv.className="dmHeaderAv"; hAv.style.cssText="width:34px;height:34px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:18px;background:rgba(0,168,255,0.1);flex-shrink:0;";
+  const hAv=mkAv(friendData.pfp,34,18); hAv.style.cssText="width:34px;height:34px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:18px;background:rgba(0,168,255,0.1);flex-shrink:0;";
   const hName=document.createElement("div"); hName.className="dmHeaderName"; hName.textContent=friendData.username;
   header.appendChild(hAv); header.appendChild(hName); main.appendChild(header);
 
   const msgs=document.createElement("div"); msgs.className="dmMessages"; main.appendChild(msgs);
 
+  // DM input row with GIF button
   const inputRow=document.createElement("div"); inputRow.className="dmInputRow";
+  const gifBtnDM=document.createElement("button"); gifBtnDM.textContent="GIF"; gifBtnDM.className="gifBtn"; gifBtnDM.title="Send GIF";
   const inp=document.createElement("input"); inp.type="text"; inp.placeholder="Message "+friendData.username+"…"; inp.style.marginTop="0";
-  const sendBtnDM=document.createElement("button"); sendBtnDM.textContent="Send"; sendBtnDM.style.marginTop="0"; sendBtnDM.style.padding="10px 18px"; sendBtnDM.style.fontSize="13px";
-  inputRow.appendChild(inp); inputRow.appendChild(sendBtnDM); main.appendChild(inputRow);
+  const sendBtnDM=document.createElement("button"); sendBtnDM.textContent="Send"; sendBtnDM.style.cssText="margin-top:0;padding:10px 18px;font-size:13px;";
+  inputRow.appendChild(gifBtnDM); inputRow.appendChild(inp); inputRow.appendChild(sendBtnDM); main.appendChild(inputRow);
 
   const me=localStorage.getItem("username");
   const roomId=dmRoomId(me,friendUsername);
 
-  async function sendDM(){
-    const text=inp.value.trim(); if(!text) return; inp.value="";
-    await addDoc(collection(db,"dms",roomId,"messages"),{text,from:me,createdAt:serverTimestamp()});
+  async function sendDM(text, gif){
+    inp.value="";
+    await addDoc(collection(db,"dms",roomId,"messages"),{text:text||"",gif:gif||null,from:me,createdAt:serverTimestamp()});
     await setDoc(doc(db,"dms",roomId,"meta","info"),{[me+"_lastRead"]:Date.now()},{merge:true});
   }
-  sendBtnDM.addEventListener("click",sendDM);
-  inp.addEventListener("keydown",e=>{ if(e.key==="Enter") sendDM(); });
+
+  gifBtnDM.addEventListener("click",()=>{
+    openGifPicker(async(gifUrl)=>{ await sendDM("", gifUrl); });
+  });
+  sendBtnDM.addEventListener("click",()=>{ const t=inp.value.trim(); if(t) sendDM(t); });
+  inp.addEventListener("keydown",e=>{ if(e.key==="Enter"){ const t=inp.value.trim(); if(t) sendDM(t); } });
 
   await setDoc(doc(db,"dms",roomId,"meta","info"),{[me+"_lastRead"]:Date.now()},{merge:true});
 
@@ -741,7 +937,12 @@ async function openDM(friendUsername, friendData){
       const m=d.data(), isMine=m.from===me;
       const div=document.createElement("div"); div.className="dmMsg "+(isMine?"mine":"theirs");
       const time=m.createdAt?.toDate?m.createdAt.toDate().toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"}):"";
-      div.appendChild(document.createTextNode(m.text));
+      if(m.gif){
+        const img=document.createElement("img"); img.src=m.gif; img.className="dmGif"; img.alt="GIF";
+        div.appendChild(img);
+      } else {
+        div.appendChild(document.createTextNode(m.text));
+      }
       const ts=document.createElement("div"); ts.className="dmMsgTime"; ts.textContent=time; div.appendChild(ts);
       msgs.appendChild(div);
     });
@@ -752,9 +953,7 @@ async function openDM(friendUsername, friendData){
 function listenDMBadge(){
   const me=localStorage.getItem("username"); if(!me) return;
   setInterval(async()=>{
-    const ud=await getUserDoc(me);
-    const friends=ud?.friends||[];
-    let total=0;
+    const ud=await getUserDoc(me); const friends=ud?.friends||[]; let total=0;
     for(const f of friends){
       const roomId=dmRoomId(me,f);
       try{
@@ -777,7 +976,7 @@ function listenFriendRequests(){
     const reqs=(snap.data().friendRequests||[]).length;
     el("friendBadge").textContent=reqs; el("friendBadge").style.display=reqs>0?"":"none";
     el("reqBadge").textContent=reqs; el("reqBadge").style.display=reqs>0?"":"none";
-    // FIX: Auto-refresh request list whenever Firestore data changes
+    // FIX: auto-refresh request list on data change
     renderRequests();
   });
 }
@@ -786,8 +985,7 @@ let allUsers=[];
 async function loadAllUsers(){
   const me=localStorage.getItem("username");
   const snap=await getDocs(collection(db,"users"));
-  allUsers=[];
-  snap.forEach(d=>{ if(d.id!==me) allUsers.push(d.data()); });
+  allUsers=[]; snap.forEach(d=>{ if(d.id!==me) allUsers.push(d.data()); });
   renderUserSearch();
 }
 el("userSearchInput").addEventListener("input",renderUserSearch);
@@ -803,7 +1001,7 @@ async function renderUserSearch(){
   filtered.forEach(u=>{
     const isFriend=friends.includes(u.username), isPending=sent.includes(u.username);
     const row=document.createElement("div"); row.className="userRow";
-    const av=mkAv(u.pfp,40,20); av.className="userRowAv";
+    const av=mkAv(u.pfp,40,20);
     const info=document.createElement("div");
     info.innerHTML=`<div class="userRowName">${u.username}</div><div class="userRowSub">${u.bio||"No bio"}</div>`;
     const actions=document.createElement("div"); actions.className="userRowActions";
@@ -820,11 +1018,9 @@ async function renderUserSearch(){
       });
       actions.appendChild(addBtn);
     } else if(isPending){
-      const pendSpan=document.createElement("span"); pendSpan.textContent="⏳"; pendSpan.style.cssText="font-size:13px;color:var(--text-muted);";
-      actions.appendChild(pendSpan);
+      const s=document.createElement("span"); s.textContent="⏳"; s.style.cssText="font-size:13px;color:var(--text-muted);"; actions.appendChild(s);
     } else {
-      const frSpan=document.createElement("span"); frSpan.textContent="✅"; frSpan.style.cssText="font-size:13px;color:var(--success);";
-      actions.appendChild(frSpan);
+      const s=document.createElement("span"); s.textContent="✅"; s.style.cssText="font-size:13px;color:var(--success);"; actions.appendChild(s);
     }
     row.appendChild(av); row.appendChild(info); row.appendChild(actions);
     res.appendChild(row);
@@ -839,7 +1035,7 @@ async function renderRequests(){
   for(const rUser of reqs){
     const ru=await getUserDoc(rUser); if(!ru) continue;
     const card=document.createElement("div"); card.className="requestCard";
-    const av=mkAv(ru.pfp,46,24); av.className="requestAvatar"; av.style.border="2px solid rgba(0,168,255,0.2)";
+    const av=mkAv(ru.pfp,46,24); av.style.border="2px solid rgba(0,168,255,0.2)";
     const info=document.createElement("div"); info.className="requestInfo";
     info.innerHTML=`<div class="requestName">${ru.username}</div><div class="requestSub">${ru.bio||"No bio"}</div>`;
     const btns=document.createElement("div"); btns.className="requestBtns";
@@ -868,16 +1064,16 @@ async function renderFriends(){
   for(const f of friends){
     const fu=await getUserDoc(f); if(!fu) continue;
     const card=document.createElement("div"); card.className="friendCard";
-    const av=mkAv(fu.pfp,52,26); av.className="friendAvatar"; av.style.margin="0 auto 10px"; av.style.border="2px solid rgba(0,168,255,0.3)";
+    const av=mkAv(fu.pfp,52,26); av.style.cssText="width:52px;height:52px;border-radius:50%;margin:0 auto 10px;border:2px solid rgba(0,168,255,0.3);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:26px;background:rgba(0,168,255,0.08);";
     card.appendChild(av);
     card.innerHTML+=`<div class="friendName">${fu.username}</div><div class="friendMeta">${fu.bio||"No bio"}</div>`;
-    const viewBtn=document.createElement("button"); viewBtn.className="btnSecondary"; viewBtn.textContent="View Profile"; viewBtn.style.cssText="margin-top:10px;padding:8px 16px;font-size:12px;";
-    const msgBtn=document.createElement("button"); msgBtn.textContent="💬 Message"; msgBtn.style.cssText="margin-top:6px;padding:8px 16px;font-size:12px;";
-    const remBtn=document.createElement("button"); remBtn.className="btnDanger"; remBtn.textContent="Remove"; remBtn.style.cssText="margin-top:6px;padding:7px 12px;font-size:11px;";
-    viewBtn.addEventListener("click",()=>openUserProfile(fu.username));
-    msgBtn.addEventListener("click",()=>{ showTab("dms"); openDM(fu.username,fu); });
-    remBtn.addEventListener("click",async()=>{ await updateDoc(doc(db,"users",me),{friends:arrayRemove(f)}); await updateDoc(doc(db,"users",f),{friends:arrayRemove(me)}); renderFriends(); renderDMSidebar(); });
-    card.appendChild(viewBtn); card.appendChild(msgBtn); card.appendChild(remBtn);
+    const vb=document.createElement("button"); vb.className="btnSecondary"; vb.textContent="View Profile"; vb.style.cssText="margin-top:10px;padding:8px 16px;font-size:12px;";
+    const mb=document.createElement("button"); mb.textContent="💬 Message"; mb.style.cssText="margin-top:6px;padding:8px 16px;font-size:12px;";
+    const rb=document.createElement("button"); rb.className="btnDanger"; rb.textContent="Remove"; rb.style.cssText="margin-top:6px;padding:7px 12px;font-size:11px;";
+    vb.addEventListener("click",()=>openUserProfile(fu.username));
+    mb.addEventListener("click",()=>{ showTab("dms"); openDM(fu.username,fu); });
+    rb.addEventListener("click",async()=>{ await updateDoc(doc(db,"users",me),{friends:arrayRemove(f)}); await updateDoc(doc(db,"users",f),{friends:arrayRemove(me)}); renderFriends(); renderDMSidebar(); });
+    card.appendChild(vb); card.appendChild(mb); card.appendChild(rb);
     grid.appendChild(card);
   }
 }
@@ -889,40 +1085,26 @@ async function openUserProfile(username){
   const friends=myData?.friends||[], sent=myData?.sentRequests||[];
   const isFriend=friends.includes(username), isPending=sent.includes(username), isMe=username===me;
   const scriptsSnap=await getDocs(query(collection(db,"scripts"),where("owner","==",username)));
-
   el("profileModalTitle").textContent=username+"'s Profile";
   const content=el("profileModalContent"); content.innerHTML="";
-
   const banner=document.createElement("div"); banner.style.cssText="height:60px;background:linear-gradient(135deg,rgba(0,168,255,0.15),rgba(123,95,255,0.15));border-radius:12px;margin-bottom:-30px;";
   const avWrap=document.createElement("div"); avWrap.style.cssText="display:flex;justify-content:center;";
-  const av=mkAv(ud?.pfp||"",80,42);
-  av.style.cssText="width:80px;height:80px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:42px;border:3px solid var(--accent);background:rgba(0,168,255,0.1);position:relative;z-index:1;";
+  const av=mkAv(ud?.pfp||"",80,42); av.style.cssText="width:80px;height:80px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:42px;border:3px solid var(--accent);background:rgba(0,168,255,0.1);position:relative;z-index:1;";
   avWrap.appendChild(av);
-
   const body=document.createElement("div"); body.style.cssText="text-align:center;margin-top:10px;";
-  body.innerHTML=`
-    <div style="font-size:22px;font-weight:700;margin-bottom:6px;">${ud?.username||username}</div>
-    <div style="color:var(--text-muted);font-size:14px;margin-bottom:16px;">${ud?.bio||"No bio set."}</div>
-    <div style="display:flex;justify-content:center;gap:32px;margin-bottom:20px;">
-      <div><div style="font-size:20px;font-weight:700;color:var(--accent);">${scriptsSnap.size}</div><div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;">Scripts</div></div>
-      <div><div style="font-size:20px;font-weight:700;color:var(--accent);">${(ud?.friends||[]).length}</div><div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;">Friends</div></div>
-    </div>`;
-
+  body.innerHTML=`<div style="font-size:22px;font-weight:700;margin-bottom:6px;">${ud?.username||username}</div><div style="color:var(--text-muted);font-size:14px;margin-bottom:16px;">${ud?.bio||"No bio set."}</div><div style="display:flex;justify-content:center;gap:32px;margin-bottom:20px;"><div><div style="font-size:20px;font-weight:700;color:var(--accent);">${scriptsSnap.size}</div><div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;">Scripts</div></div><div><div style="font-size:20px;font-weight:700;color:var(--accent);">${(ud?.friends||[]).length}</div><div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.8px;">Friends</div></div></div>`;
   const actRow=document.createElement("div"); actRow.style.cssText="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;";
   if(!isMe){
     if(isFriend){
-      const msgBtn=document.createElement("button"); msgBtn.textContent="💬 Message"; msgBtn.style.cssText="margin:0;padding:10px 18px;font-size:13px;";
-      msgBtn.addEventListener("click",async()=>{ el("profileOverlay").classList.remove("open"); showTab("dms"); openDM(username, ud); });
-      actRow.appendChild(msgBtn);
-      const remBtn=document.createElement("button"); remBtn.className="btnDanger"; remBtn.textContent="Remove Friend"; remBtn.style.cssText="margin:0;padding:10px 18px;font-size:13px;";
-      remBtn.addEventListener("click",async()=>{ await updateDoc(doc(db,"users",me),{friends:arrayRemove(username)}); await updateDoc(doc(db,"users",username),{friends:arrayRemove(me)}); el("profileOverlay").classList.remove("open"); renderFriends(); renderDMSidebar(); });
-      actRow.appendChild(remBtn);
+      const mb=document.createElement("button"); mb.textContent="💬 Message"; mb.style.cssText="margin:0;padding:10px 18px;font-size:13px;";
+      mb.addEventListener("click",async()=>{ el("profileOverlay").classList.remove("open"); showTab("dms"); openDM(username, ud); }); actRow.appendChild(mb);
+      const rb=document.createElement("button"); rb.className="btnDanger"; rb.textContent="Remove Friend"; rb.style.cssText="margin:0;padding:10px 18px;font-size:13px;";
+      rb.addEventListener("click",async()=>{ await updateDoc(doc(db,"users",me),{friends:arrayRemove(username)}); await updateDoc(doc(db,"users",username),{friends:arrayRemove(me)}); el("profileOverlay").classList.remove("open"); renderFriends(); renderDMSidebar(); }); actRow.appendChild(rb);
     } else if(isPending){
       const p=document.createElement("span"); p.textContent="⏳ Request Sent"; p.style.cssText="color:var(--text-muted);font-size:13px;padding:10px 0;display:block;"; actRow.appendChild(p);
     } else {
-      const addBtn=document.createElement("button"); addBtn.className="btnSuccess"; addBtn.textContent="➕ Add Friend"; addBtn.style.cssText="margin:0;padding:10px 18px;font-size:13px;";
-      addBtn.addEventListener("click",async()=>{ await updateDoc(doc(db,"users",username),{friendRequests:arrayUnion(me)}); await updateDoc(doc(db,"users",me),{sentRequests:arrayUnion(username)}); el("profileOverlay").classList.remove("open"); });
-      actRow.appendChild(addBtn);
+      const ab=document.createElement("button"); ab.className="btnSuccess"; ab.textContent="➕ Add Friend"; ab.style.cssText="margin:0;padding:10px 18px;font-size:13px;";
+      ab.addEventListener("click",async()=>{ await updateDoc(doc(db,"users",username),{friendRequests:arrayUnion(me)}); await updateDoc(doc(db,"users",me),{sentRequests:arrayUnion(username)}); el("profileOverlay").classList.remove("open"); }); actRow.appendChild(ab);
     }
   }
   body.appendChild(actRow);
@@ -939,21 +1121,18 @@ async function renderMyProfile(){
   localStorage.setItem("pfp",pfp); localStorage.setItem("bio",bio);
   const scriptsSnap=await getDocs(query(collection(db,"scripts"),where("owner","==",me)));
   const page=el("myProfilePage"); page.innerHTML="";
-
   const header=document.createElement("div"); header.className="profileHeader";
   const banner=document.createElement("div"); banner.style.cssText="position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(135deg,rgba(0,168,255,0.15),rgba(123,95,255,0.15));z-index:0;";
   header.appendChild(banner);
   const row=document.createElement("div"); row.style.cssText="display:flex;align-items:flex-end;gap:18px;margin-top:40px;position:relative;z-index:1;flex-wrap:wrap;";
   const avDiv=document.createElement("div"); avDiv.className="profileAvatar";
-  if(pfp.startsWith("data:")){ const img=document.createElement("img"); img.src=pfp; avDiv.appendChild(img); }
-  else avDiv.textContent=pfp||"?";
+  if(pfp.startsWith("data:")){ const img=document.createElement("img"); img.src=pfp; avDiv.appendChild(img); } else avDiv.textContent=pfp||"?";
   const info=document.createElement("div"); info.className="profileInfo";
   info.innerHTML=`<div class="profileName">${me}</div><div class="profileBio">${bio||"No bio set."}</div><div class="profileStats"><div class="profileStat"><div class="num">${scriptsSnap.size}</div><div class="lbl">Scripts</div></div><div class="profileStat"><div class="num">${(ud?.friends||[]).length}</div><div class="lbl">Friends</div></div></div>`;
   row.appendChild(avDiv); row.appendChild(info); header.appendChild(row);
   const actRow=document.createElement("div"); actRow.className="profileActions";
   const editBtn=document.createElement("button"); editBtn.textContent="✏️ Edit Profile"; editBtn.style.margin="0"; editBtn.addEventListener("click",openSettings); actRow.appendChild(editBtn);
   header.appendChild(actRow); page.appendChild(header);
-
   const sec=document.createElement("div");
   sec.innerHTML=`<div class="sectionHead"><h2>My Scripts</h2></div>`;
   const grid=document.createElement("div"); grid.className="cardGrid";
